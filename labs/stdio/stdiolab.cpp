@@ -32,6 +32,8 @@ int main()
 
     cout << "hope you'll like my ASCII art...\n" << endl;
 
+    cout << "  |\\_/|   ******************    (\\_/)" << endl;
+    cout << " / @ @ \\  *       Lab 1    *   (=\'.\'=)" << endl;
 
 
 return 0; 
