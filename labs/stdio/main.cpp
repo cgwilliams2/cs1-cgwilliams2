@@ -7,7 +7,8 @@
 
     This program produces an ASCII art on the console. 
 
-    Algorithm steps: Write a series of cout statements to print
+    Algorithm steps: Write a series of cout statements 
+    to print
     the art to the console. 
 
 */
