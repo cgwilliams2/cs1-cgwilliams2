@@ -8,7 +8,7 @@
 | **Section** | 3 |
 | **Semester** | Spring 2023 |
 | **Student** | Colton Williams |
-| **Mav Username**            | cgwilliam2 |
+| **Mav Username**            | cgwilliams2 |
 | **GitHub Username**         | cgwilliams2 |
 | **Repository**          | https://github.com/cgwilliams2/cs1-cgwilliams2 |
 
