@@ -35,7 +35,7 @@
 | :--- | :--- |
 | Name | ASCII 1 |
 | Description | Short code that asks for the users name then greets them and outputs some basic ascii art  |
-| Due Date | 02/05/2023 |
+| Due Date | 02/10/2023 |
 | Status | Done |
 | Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/stdio/ascii1 |
 | Self Grade | 100/100 |
