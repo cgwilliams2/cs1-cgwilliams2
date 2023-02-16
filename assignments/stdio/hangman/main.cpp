@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <string>
-#include <algorithm>
-#include <cctype>
+
+
 
 using namespace std;
 
@@ -27,8 +27,10 @@ int main(){
 
     }
 
+    
+
     cout << "Hello, what is your're name?\n" << endl; 
-    cin >> name; 
+    getline(cin, name); 
     cout << "Hey, " << name << "!\n Have someone enter a word or two that you will try to guess before\n your charater gets hung!\n Enter a word:";
     getline(cin, gameWord);
 
@@ -43,20 +45,27 @@ int main(){
    
         
     int count = 0;              //removes any spaces from the string and saves them into the varible str
-    for(int i = 0; str[i]; i++)
+    for(int i = 0; i <= str.length(); i++)
         if(str[i] != ' ')
             str[count++] = str[i];
     str[count] = '\0';
+
+    //string strt = str; 
     
-    string strt = str;
-    transform(strt.begin(), strt.end(), strt.begin(), ::tolower);
+    
+
+    //for (int x=0; x<strt.length(); x++)
+        //strt[x] = to_lower(strt[x]); 
+
+    
+    
 
     int winCon = str.length();
 
 
     //building output graphics
-    string game = "     |------------\n     |/       |\n     |\n     |\n     |\n     |\n     |\n===========\n";
-    string game1 = "     |------------\n     |/       |\n     |        O\n     |\n     |\n     |\n     |\n===========\n";
+       string game = "     |------------\n     |/       |\n     |\n     |\n     |\n     |\n     |\n===========\n";
+     string game1 = "     |------------\n     |/       |\n     |        O\n     |\n     |\n     |\n     |\n===========\n";
     string game2 = "     |------------\n     |/       |\n     |        O\n     |        |\n     |\n     |\n     |\n===========\n";
     string game3 = "     |------------\n     |/       |\n     |        O\n     |       /|\n     |\n     |\n     |\n===========\n";
     string game4 = "     |------------\n     |/       |\n     |        O\n     |       /|\\ \n     |\n     |\n     |\n===========\n";
@@ -67,7 +76,7 @@ int main(){
     cout << "Guess a letter.\n";
 
     for(int i = 0; i < gameWord.length(); i++){ //makes string of _ _ _ representing unguessed letters
-        if(gameWord[i] = ' ')
+        if(gameWord[i] == ' ')
             word+=" ";
          else if(gameWord[i] != ' ')
             word+="_";
@@ -144,7 +153,7 @@ int main(){
             for(int i = 0; i < 50; i++){
          cout << "\n\n"; 
          }
-            cout << game6 << "\nyou lost :( The word was: " << gameWord << "\n Press enter to exit\n";
+            cout << game6 << "\nyou lost :( The word was: " << gameWord << " " << str << "\n Press enter to exit\n";
             cin.ignore();
             if(cin.get() == '\n')
             return 0;
@@ -169,7 +178,7 @@ int main(){
          cout << game5;
 
          
-            cout << "\n !You Won! The word was: " << gameWord << "\n";
+            cout << "\n !You Won! The word was: " << gameWord << " " << str << "\n";
             cout << "\n\n     press enter to exit";
             cin.ignore();
             if(cin.get() == '\n')
@@ -188,10 +197,10 @@ int main(){
     }
     
 
-cout << "\n\n press enter to exit"; //random exit code if for some reason code dosent exit as it should 
-cin.ignore();
-if(cin.get() == '\n')
-return 0;
+ cout << "\n\n press enter to exit"; //random exit code if for some reason code dosent exit as it should 
+ cin.ignore();
+ if(cin.get() == '\n')
+ return 0;
 
 
 
