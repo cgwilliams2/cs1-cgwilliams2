@@ -18,13 +18,13 @@
 
 | Name | Value |
 | :--- | :--- |
-| Name |  |
-| Description |  |
-| Due Date |  |
-| Status |  |
-| Location |  |
-| Self Grade |  |
-| Notes |  |
+| Name |  Stdio & Kattis Echo |
+| Description | Hangman game and kattis echo  |
+| Due Date | 02/17/2023 |
+| Status | Done |
+| Location |https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/assignments/stdio  |
+| Self Grade | 100/100 |
+| Notes | none  |
 
 
 ## Labs
