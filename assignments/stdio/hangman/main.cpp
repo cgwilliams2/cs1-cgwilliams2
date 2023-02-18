@@ -6,6 +6,7 @@
 
 
 
+
 using namespace std;
 
 int main(){
@@ -51,6 +52,7 @@ int main(){
     str[count] = '\0';
 
     //string strt = str; 
+         // random code not used right not
     
     
 
