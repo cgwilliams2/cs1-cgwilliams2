@@ -32,5 +32,7 @@ run:
 test:
 	cat 1.in | ./$(PROGRAM) | diff - 1.ans
 	cat 2.in | ./$(PROGRAM) | diff - 2.ans
-	@#FIXME - Add commands to test 4 more input files
+	cat 3.in | ./$(PROGRAM) | diff - 3.ans
+	cat 4.in | ./$(PROGRAM) | diff - 4.ans
+	
 	@echo "All test cases passed!"
