@@ -48,7 +48,7 @@ int main()
     result = log10(number);
     printf("Log10(%f) = %.2f\n", number, result);
     //FIXME8 - Convert number into radians and store into a variable
-    double numRadians = number * (M_PI*180);
+    double numRadians = number * (M_PI/180);
     //FIXME9 - Using library function, find and print the sine of the radian value in FIXME 8 upto 2 decimal points
     result = sin(numRadians);
     printf("Sine of Radian Value(%f) = %.2f\n", number, result);
