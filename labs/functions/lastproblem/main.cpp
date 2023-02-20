@@ -27,9 +27,10 @@ int main()
 	string input = "input";
 	// step1. read data
 	input = readData();
-	twilight(readData());// FIXME1: Call twilight function passing input as an argument
+	// FIXME1: Call twilight function passing input as an argument
 	// store the returned result into answer variable
 	string answer = input;
+    answer = twilight(input);
 	// print answer
 	printf("%s\n", answer.c_str());
 	return 0;
