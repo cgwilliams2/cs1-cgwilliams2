@@ -29,3 +29,8 @@ clean:
 run:
 	./$(PROGRAM)
 
+test:
+	cat 1.in | ./$(PROGRAM) | diff - 1.ans
+	cat 2.in | ./$(PROGRAM) | diff - 2.ans
+	@#FIXME - Add commands to test 4 more input files
+	@echo "All test cases passed!"
