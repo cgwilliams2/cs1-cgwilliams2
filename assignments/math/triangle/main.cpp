@@ -11,7 +11,7 @@ using namespace std;
 
 int main(){
 
- double a, b, c, s, area;
+ double a, b, c, s, area, peri;
 
  cout << "Enter the three side lengths of a triangle and the area will be calculated." << endl; 
  cout << "Enter the first side length: " << endl; 
@@ -23,13 +23,14 @@ int main(){
  cout << "The side lengths entered are: " << a << ", " << b << ", " << c << "." << endl; 
 
  // doing maths 
- 
+ peri = a + b + c;
  s = (a+b+c)/2;
 
  area = s * (s-a) * (s-b) * (s-c);
  area = sqrt(area);
 
- cout << "The area of a traingle with side lengths of: " << a << ", " << b << ", " << c << " is: " << area << endl; 
+
+ cout << "The area of a traingle with side lengths of: " << a << ", " << b << ", " << c << " is: " << area << "\nand the pereimeter of the triangle is: " << peri << endl; 
 
  cin.ignore(1000, '\n');
  cout << "Enter to quit the program: ";
