@@ -42,3 +42,14 @@
 | Notes | N/A |
 
 
+| Name | Value |
+| :--- | :--- |
+| Name | Functions |
+| Description | last problem and libary coded and done   |
+| Due Date | 02/23/2023 |
+| Status | Done |
+| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/lab1Ascii |
+| Self Grade | 100/100 |
+| Notes | N/A |
+
+
