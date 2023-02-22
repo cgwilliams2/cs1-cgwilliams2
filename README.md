@@ -26,6 +26,16 @@
 | Self Grade | 100/100 |
 | Notes | none  |
 
+| Name | Value |
+| :--- | :--- |
+| Name |  Math HW |
+| Description | Triangle and R2  |
+| Due Date | 02/24/2023 |
+| Status | Done |
+| Location |https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/assignments/math |
+| Self Grade | 100/100 |
+| Notes | none  |
+
 
 ## Labs
 
@@ -48,7 +58,7 @@
 | Description | last problem and libary coded and done   |
 | Due Date | 02/23/2023 |
 | Status | Done |
-| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/lab1Ascii |
+| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/functions |
 | Self Grade | 100/100 |
 | Notes | N/A |
 
