@@ -57,6 +57,19 @@ double power (double one, double two) {
 
 double root (double one) {
     return sqrt(one);
+
+}
+
+double bigger(double one, double two){
+    if(one != two && one > two)
+    return one;
+    else if(one != two)
+    return two;
+    else{
+        cout << "N/A Same number "; 
+     return one; 
+    }
+    
 }
 
 double test(){
@@ -77,7 +90,8 @@ double ttwo = test();
     cout << "The difference between " << tone << " and " << ttwo << " is " << dif (tone, ttwo)<< endl; 
     cout << tone << " % " << ttwo << " = " << divr(tone, ttwo) << endl;
     cout << tone << " ^ " << ttwo << " = " << power(tone, ttwo) << endl; 
-    cout << "The square root of " << tone << " is " << root(tone) << "\n" << endl; 
+    cout << "The square root of " << tone << " is " << root(tone) << endl; 
+    cout << "The bigger of the two numbers is: " << bigger(tone, ttwo) << "\n" << endl;
 
 
 
@@ -104,6 +118,8 @@ int main (){
     cout << main1 << " % " << main2 << " = " << divr(main1, main2) << endl;
     cout << main1 << " ^ " << main2 << " = " << power(main1, main2) << endl; 
     cout << "The square root of " << main1 << " is " << root(main1) << endl; 
+    cout << "The bigger of the two numbers is: " << bigger(main1, main2) << "\n" << endl;
+
 
     cout << "\n\n" << endl; 
     tester();
