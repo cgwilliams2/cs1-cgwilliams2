@@ -36,6 +36,17 @@
 | Self Grade | 100/100 |
 | Notes | none  |
 
+| Name | Value |
+| :--- | :--- |
+| Name |  HW3 |
+| Description | Calculator and Faktor  |
+| Due Date | 03/03/2023 |
+| Status | Done |
+| Location |https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/assignments/hw3 |
+| Self Grade | 100/100 |
+| Notes | none  |
+
+
 
 ## Labs
 
