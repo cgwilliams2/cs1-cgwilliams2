@@ -52,6 +52,10 @@ int main()
 
     //FIXME-bonus - 10 bonus points - add loop until user wants to quit
     // the loop will execute the following block of code
+    bool quit = false; 
+    while(!quit){
+
+    
     {
         clearScreen();
         cout << "Program calculates distance between 2 points on a 2D coordinate." << endl;
@@ -62,13 +66,25 @@ int main()
 
         cout << "Enter a second point in the form (x, y): ";
         //FIXME3 - Read/parse the second point and store data into variables x2 and y2
-        cin >> ch >> x2 >> ch >> y2 >> ch; 
+        cin >> ch >> x2 >> ch >> y2 >> ch;
+        printf("(x2, y2) = (%d, %d)\n", x2, y2);
         //FIXME4 - Call unitTest function
         unitTest();
         //FIXME5 - call findDistance function passing proper arguments
         //FIXME6 – Using printf function display the returned distance with proper description
-        printf("The distance between the two points is(%f) = %.2f\n", findDistane(x1, y1, x2, y2));
+        float distance = findDistance(x1, y1, x2, y2);
+        printf("The distance between the two points is: %.2f\n", distance);
         
+    }
+
+        cout << "\n\ntype y to enter another set of points otherwise type n ";
+        string q; 
+        cin >> q; 
+        if(q == "n")
+            quit = true;
+
+        
+
     }
 
     cin.ignore(1000, '\n');
@@ -87,8 +103,8 @@ double findDistance(int x1, int y1, int x2, int y2)
         // following the algorithm in step  return the calculated distance
     
      
-    
-    return sqrt((x2-x1^2) + (y2-y1)^2);
+     
+    return sqrt(pow(x2-x1,2) + pow(y2-y1,2)); 
 }
 
 // test function that test findDistance function with 3 test cases
@@ -98,11 +114,11 @@ void unitTest()
     float expected = 2.236067f;
     assert( fabs(result - expected) <= epsilon); //accept the result if it's less than the error of margin
     // FIXME8 - add at least two more test cases
-    float result =  findDistance(0, 0, 10, 0);
-    float expected = 10.0f;
+     result =  findDistance(0, 0, 10, 0);
+     expected = 10.0f;
     assert( fabs(result - expected) <= epsilon);
-    float result =  findDistance(0, -10, 0, 20);
-    float expected = 30.0f;
+     result =  findDistance(0, -10, 0, 20);
+     expected = 30.0f;
     assert( fabs(result - expected) <= epsilon);
     cerr << "all test cases passed..." << endl;
 }
