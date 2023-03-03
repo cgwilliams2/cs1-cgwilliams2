@@ -51,7 +51,7 @@ float areaOfTriangle(const unsigned height, const unsigned base) {
   float area = 0;
   // FIXME2: Find the area of traingle using the formular given in algorithm step: 2.a
   // store the area into area variable (Base * Height)/2
-    area = (base * height)/2; 
+    area = (base * height)/2.0; 
 	return area;
 } 
 
@@ -69,6 +69,7 @@ void testArea() {
   base = 10;
   answer = areaOfTriangle(height, base);
   expected = 100.0;
+  assert(abs(answer-expected) < MAX_ERROR);
   // FIXME4: Write 3rd test case
   height = 75;
   base = 2;
@@ -79,5 +80,7 @@ void testArea() {
   base = 4;
   answer = areaOfTriangle(height, base);
   expected = 120.0;
+  assert(abs(answer-expected) < MAX_ERROR);
   cerr << "All test cases passed!\n";
 }
+
