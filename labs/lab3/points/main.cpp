@@ -53,7 +53,7 @@ int main()
     //FIXME-bonus - 10 bonus points - add loop until user wants to quit
     // the loop will execute the following block of code
     bool quit = false; 
-    while(!quit){
+    while (quit != true){
 
     
     {
