@@ -29,6 +29,3 @@ clean:
 run:
 	./$(PROGRAM)
 
-test:
-
-	./$(PROGRAM) *.o test

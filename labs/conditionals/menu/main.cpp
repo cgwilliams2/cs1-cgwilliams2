@@ -85,6 +85,7 @@ int main(int argc, char* argv[]) {
 }
 
 void printMenu(void) {
+    test();
     cout << "Menu options:\n";
     cout << "[1] Add two numbers\n";
     cout << "[2] Subtract two numbers\n";
@@ -162,7 +163,7 @@ void test() {
     assert(findQuotient(6, 3) == 2);
     assert(findQuotient(50, 5) == 10);
     assert(findAverage(6, 3) == 4.5);
-    assert(findAverage(90, 45) == 45);
+    assert(findAverage(90, 45) == 67.5);
 
     printf("%s\n", "all test cases passed...");
 }
