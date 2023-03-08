@@ -85,7 +85,7 @@ else if((d < a || d == a) && (d < b || d == b) && (d < c || d == c) && (d < e ||
 else if((e < a || e == a) && (e < b || e == b) && (e < c || e == c) && (e < d || e == d))
     return e;
     
-return 0.0; 
+return 0.0;
 }
 
 string evenOdd(double a, double b, double c, double d, double e){
