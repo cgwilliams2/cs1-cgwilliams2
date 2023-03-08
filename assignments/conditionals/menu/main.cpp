@@ -9,11 +9,31 @@ using namespace std;
 
 double big5(double a, double b, double c, double d, double e);
 
+double small5(double a, double b, double c, double d, double e);
 
 
 
+bool run();
+
+void menu();
+
+void clearScreen() {
+    system("clear");
+}
 
 int main(){
+
+ string name;
+ cout << "Hello, please enter users name: "; 
+ cin >> name;
+ clearScreen();
+ cout << "Welcome! " << name << ". This is a simple C++ program."<< endl;
+
+
+
+
+
+
     double a, b, c, d, e;
  cout << " enter 5 #'s: \n"; 
  cin >> a >> b >> c >> d >> e; 
@@ -30,18 +50,9 @@ int main(){
 
 }
 
-/*bool run(){
-    double a, b, c, d, e;
-
-    while(true){
-
-    }
-
-    
 
 
-}
-*/
+
 
 
 double big5(double a, double b, double c, double d, double e){
@@ -59,3 +70,28 @@ else if((e > a || e == a) && (e > b || e == b) && (e > c || e == c) && (e > d ||
  
 return 0.0;
 }
+
+double small5(double a, double b, double c, double d, double e){
+
+    return 0; 
+}
+
+
+void menu(void){
+    cout << "Menu options:\n";
+    cout << "[1] Find largest of 5 numbers\n";
+    cout << "[2] Find smallest of 5 numbers\n";
+}
+
+bool run(){
+    double a, b, c, d, e;
+
+    while(true){
+
+    }
+
+    
+
+
+}
+
