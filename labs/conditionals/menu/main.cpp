@@ -164,7 +164,6 @@ void test() {
     assert(findQuotient(50, 5) == 10);
     assert(findAverage(6, 3) == 4.5);
     assert(findAverage(90, 45) == 67.5);
-
     printf("%s\n", "all test cases passed...");
 }
 
