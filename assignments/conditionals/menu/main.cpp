@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cmath> 
 #include <string>
+#include <cassert>
 
 
 using namespace std; 
@@ -13,8 +14,6 @@ double small5(double a, double b, double c, double d, double e);
 
 string evenOdd(double a, double b, double c, double d, double e);
 
-
-
 bool run();
 
 void menu();
@@ -22,6 +21,8 @@ void menu();
 void clearScreen() {
     system("clear");
 }
+
+void test();
 
 int main(){
 
@@ -44,7 +45,7 @@ int main(){
 
 
     cin.ignore(100, '\n');
-    cout << "Enter to quit the program.\n";
+    cout << "\nEnter to quit the program.\n";
     cout << "Good bye..." << endl;
     cin.get();
     return 0; 
@@ -111,14 +112,29 @@ string evenOdd(double a, double b, double c, double d, double e){
     
 }
 
+void test(){
+    assert(big5(1, 2, 3, 4, 5) == 5.00);
+    assert(big5(2, 9.1, 3.14, 9, 99) == 99.00);
+    assert(big5(10, 20, -20, 30, 30.1) == 30.10);
+    assert(small5(8, 2.10, 2.01, 4, 5) == 2.01);
+    assert(small5(1, 2, -3, -20, 5) == -20.00);
+    assert(small5(100, 200, 34.2, 99, 69) == 34.20);
+    assert(evenOdd(1, 1, 1, 1, 1) == "Odd");
+    assert(evenOdd(2, 2, 2, 2, 2) == "Even");
+    assert(evenOdd(0, 0, 0, 0, 0) == "Zero");
+    printf("%s\n", "all test cases passed...\n");
+    
+}
+
 
 void menu(void){
+    test();
     cout << "\nMenu options:\n";
     cout << "[1] Find largest of 5 numbers\n";
     cout << "[2] Find smallest of 5 numbers\n";
     cout << "[3] Find if sum of 5 numbers is even or odd\n";
-    cout << "[8] Quit the program\n";
-    cout << "Enter one of the menu options [1-8]: ";
+    cout << "[4] Quit the program\n";
+    cout << "Enter one of the menu options [1-4]: ";
 }
 
 bool run(){
@@ -129,33 +145,59 @@ bool run(){
     while(loop){
         menu();
         cin >> select;
-        if(select < 1 || select > 10){
+        if(select < 1 || select > 4){
         clearScreen();
-        cout << "invalid entry, please enter a value between 1 and 8."; 
+        cout << "invalid entry, please enter a value between 1 and 4."; 
+        loop = true;  
         }
 
-        if(select == 1){
+        switch(select){
+
+            case 1:
+        {
             cout << "Enter five numbers seperated by a space: ";
             cin >> a >> b >> c >> d >> e;
             double ans = big5(a, b, c, d, e);
             printf("The largest number is: %.2f\n", ans);
             loop = true;
+            break; 
         }
-        if(select ==2){
+
+        case 2: {
             cout << "Enter five numbers seperated by a space: ";
             cin >> a >> b >> c >> d >> e;
             double ans = small5(a, b, c, d, e);
             printf("The smallest number is: %.2f\n", ans);
             loop = true;
-        }
-        if(select == 3){
-            cout << "Enter five numbers seperated by a space: ";
-            cin >> a >> b >> c >> d >> e;
-            cout << "\nThe sum of the numbers entered is: " << evenOdd(a, b, c, d, e);
+            break;
         }
 
-        if(select == 8)
-            return false; 
+        case 3: {
+            cout << "Enter five numbers seperated by a space: ";
+            cin >> a >> b >> c >> d >> e;
+            cout << "\nThe sum of the numbers entered is: " << evenOdd(a, b, c, d, e) << "\n";
+            loop = true; 
+            break; 
+
+        }
+
+        case 4: {
+            return false;
+
+
+        }
+
+        
+
+        
+
+
+        
+        
+
+        
+        
+    }
     }
     
 
