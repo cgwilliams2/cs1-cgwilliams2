@@ -101,7 +101,7 @@ string evenOdd(double a, double b, double c, double d, double e){
     if(sum == 1)
         return "Odd";
     
-    return "Error"; 
+    return "Error..."; 
     
 
 
