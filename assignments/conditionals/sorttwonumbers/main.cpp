@@ -13,7 +13,7 @@ int main(){
         cout << b << " " << a; 
     if(b > a) 
         cout << a << " " << b; 
-    else
+    else if(a == b)
     cout << a << " " << b; 
 
 
