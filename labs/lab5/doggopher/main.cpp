@@ -1,9 +1,9 @@
 /*
 Kattis - Dog & Gopher
 Loop Lab
-Updated By: FIXME
+Updated By:  Colton Williams
 CSCI 111
-Date: FIXME
+Date:  03/15/2023
 
 Read and solve the Kattis problem: https://open.kattis.com/problems/doggopher 
 
@@ -71,6 +71,9 @@ float distance(const float x1, const float y1, const float x2, const float y2) {
   float d = 0;
   // FIXME4: Find the Eucledian distance between two points on 2-d coordiantes.
   // store the distance into the `d` variable
+    d = pow(x2-x1, 2) + pow(y2-y1, 2);
+    d = sqrt(d);
+
 	return d;
 }
 
