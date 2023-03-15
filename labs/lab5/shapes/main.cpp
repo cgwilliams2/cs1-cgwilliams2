@@ -119,7 +119,7 @@ int main(int argc, char* argv[]) {
         cin.ignore(100, '\n');
         q = getchar();
         
-        if((q != 89 && q != 121) || q == '\n')
+        if((q != 'y' && q != 'Y') || q == '\n')
             quit = true;
         
         
