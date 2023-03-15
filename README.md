@@ -47,6 +47,28 @@
 | Notes | none  |
 
 
+| Name | Value |
+| :--- | :--- |
+| Name |  HW4 |
+| Description | Conditionals menu and sort two numbers  |
+| Due Date | 03/10/2023 |
+| Status | Done |
+| Location |https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/assignments/conditionals |
+| Self Grade | 100/100 |
+| Notes | none  |
+
+
+| Name | Value |
+| :--- | :--- |
+| Name |  HW5 |
+| Description | GuessNumber and Kattis FizzBuzz  |
+| Due Date | 03/17/2023 |
+| Status | IP |
+| Location |https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/assignments/conditionals |
+| Self Grade | 100/ |
+| Notes | none  |
+
+
 
 ## Labs
 
@@ -83,5 +105,30 @@
 | Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/lab3 |
 | Self Grade | 100/100 |
 | Notes | N/A |
+
+
+| Name | Value |
+| :--- | :--- |
+| Name | Lab4 Conditionals |
+| Description | Menu finished  |
+| Due Date | 03/10/2023 |
+| Status | Done |
+| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/conditionals |
+| Self Grade | 100/100 |
+| Notes | N/A |
+
+
+| Name | Value |
+| :--- | :--- |
+| Name | Lab5 Loops |
+| Description | DogGopher and Shapes finished  |
+| Due Date | 03/16/2023 |
+| Status | Done |
+| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/lab5 |
+| Self Grade | 100/100 |
+| Notes | N/A |
+
+
+
 
 
