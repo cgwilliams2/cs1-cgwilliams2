@@ -1,8 +1,8 @@
 /*
     Loops Lab
-    Updated By: FIXME1
+    Updated By: Colton Williams
     CSCI 111
-    Date: FIXME2
+    Date: 03/15/2023
 
     Program prints geometric shapes of given height with * using loops
 */
@@ -26,11 +26,9 @@ void printTriangle(int height) {
         row += 1;
         cout << endl;
     }
+    cout << endl; 
 }
-
-
-void printFlippedTriangle(int height) {
-    /* 
+/* 
     Implement the function that takes height as an argument
     and prints a triangle with * of given height.
     Triangle of height 5, e.g., should look like the following.
@@ -42,6 +40,19 @@ void printFlippedTriangle(int height) {
     
     */
     // FIXME3 ...
+
+void printFlippedTriangle(int height) {
+    int row = height; 
+    while(height != 0){
+        for(int i = 1; i <= row; i++)
+            cout << "* ";
+     row--; 
+     height--; 
+     cout << endl; 
+
+    }
+    cout << endl; 
+    
 }
 
 
@@ -59,6 +70,18 @@ Square of height 5, e.g., would look like the following.
 
 */
 
+void printSquare(int height){
+    for(int i = 1; i <= height; i++){
+        for(int i = 1; i <= height; i++){
+            cout << "* "; 
+        }
+        cout << endl; 
+    }
+    cout << endl; 
+
+
+}
+
 // function clears the screen system call
 // NOTE: system call is not a security best pracice!
 void clearScreen() {
@@ -71,14 +94,40 @@ void clearScreen() {
 }
 
 int main(int argc, char* argv[]) {
+    bool quit = false; 
+
+    
+
     // FIXME5 add a loop to make the program to continue to run until the user wants to quit
     // FIXME6 call clearScreen function to clear the screen for each round of the loop
-    int height;
+
+    while(!quit){
+        int height;
+        int q; 
+        clearScreen(); 
     cout << "Program prints geometric shapes of given height with *\n";
     cout << "Please enter the height of the shape: ";
     cin >> height;
     // call printTriangle function passing user entered height
     printTriangle(height);
+    printFlippedTriangle(height);
+    printSquare(height);
+
+
+        cout << endl << "Type y/Y to build another set of shapes. Or enter anything to quit the program." << endl; 
+        
+        cin.ignore(100, '\n');
+        q = getchar();
+        
+        if((q != 89 && q != 121) || q == '\n')
+            quit = true;
+        
+        
+        
+
+
+    }
+    
 
     // FIXME7
     // Call printFlippedTriangle passing proper argument
