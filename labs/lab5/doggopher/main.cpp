@@ -125,5 +125,5 @@ void testDistance() {
   cout << answer << " " << expected << endl;
   assert(abs(answer-expected) < TOLERANCE);
   
-  cerr << "All test cases passed!\n";
+  cerr << "Local test cases passed!\n";
 }
