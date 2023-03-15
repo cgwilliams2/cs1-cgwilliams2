@@ -24,8 +24,11 @@ void clearScreen() {
 
 void test();
 
-int main(){
-
+int main(int argc, char* argv[]) {
+    if(argc == 2 && string(argv[1]) == "test") {
+        test();
+        exit(EXIT_SUCCESS); // exit the program
+    }
  string name;
  cout << "Hello, please enter users name: "; 
  cin >> name;
