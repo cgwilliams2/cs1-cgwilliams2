@@ -3,24 +3,6 @@
 
 
 
-/*
-      Welcome to -- Guess the Number -- game!        	
-                       	What is your name?       	
-                        John         	
-      	            Hello, John. I am thinking of a number between 1 and 20.  	
-                        You get 6 tries to guess the number. Take a guess. 
-                        10   
-                        Your guess is too high.   	
-                        Take a guess.      	
-                        2
-                       	Your guess is too low.    	
-                        Take a guess.      	
-                        4   	
-                        Congratulations, John! You WIN!! You guessed my number in 3 guesses.
-                        Would you like to play again? Enter [y/Y], anything else to quit.
-                        y
-
-*/
 
 
 
@@ -40,40 +22,65 @@ bool win(int gNum, int uNum);
 bool lower(int gNum, int uNum);
 bool higher(int gNum, int uNum);
 void clearScreen();
+void test();
+
+int timesPlayed = 0, timesWon = 0, timesLost = 0;
+double percentLost, percentWon;
+
+
+int main(int argc, char* argv[]) {
+  if (argc == 2 and string(argv[1]) == string("test")) {
+    // FIXME1: call testDistance function
+    test(); 
+  }
+  else {
+
+    
 
 
 
-int main(){
     clearScreen();
     cout << "Welcome to --Guess The Number-- game! \nWhat is your name?" << endl;
     string name;
     cin >> name; 
     cout << "Hello, " << name << ". I am thinking of a number between 1 and 20." << endl; 
 
-    game(name); 
+    game(name);
+
+    percentLost = ((double)timesLost / (double)timesPlayed) * 100;
+    percentWon = ((double)timesWon / (double)timesPlayed) * 100;
+    cout << "You played " << timesPlayed << " times, you won " << percentWon << "% of games played, and lost " << percentLost << "% of games played." << endl; 
+
+    
 
 
 
     return 0; 
+  }
+
 }
 
 
 void game(string name){
     int uNum, numG, gNum, c; 
     bool won = false, quit = false; 
-    //bool lost = false; 
+    
     
 
     
     while(!quit){
-        
+        timesPlayed++;
         won = false;
-        //lost = false
         numG = 0;
         gNum = randomNumber();
         cout << "You get 6 tries to guess the number." << endl;
         while(numG <= 6 && !won){
-            
+            if(numG >= 6){
+            cout << "Sorry, " << name << " You lose..." << endl;
+            timesLost++;
+            break; 
+            }
+
             cout << "Take a guess." << endl; 
             uNum = readNumber();
             numG++;
@@ -81,6 +88,7 @@ void game(string name){
             if(c == 0){
                 cout << "Congratulations, " << name <<"! You WIN!! You guessed my number in " << numG << " guesses." << endl; 
                 won = true; 
+                timesWon++;
             }
             if(c == 1)
                 cout << "Your guess is too low." << endl;
@@ -93,8 +101,7 @@ void game(string name){
 
 
         }
-        if(numG >= 6)
-        cout << "Sorry, " << name << " You lose..." << endl; 
+         
         
 
         cout << "Would you like to play again? Enter [y/Y], anything else to quit." << endl;
@@ -104,9 +111,11 @@ void game(string name){
         
         if((q != 'y' && q != 'Y') || q == '\n')
             quit = true;
+        else 
+        clearScreen();
 
 
-     clearScreen();
+     
     }
 
 
@@ -160,4 +169,11 @@ void clearScreen() {
     system("clear");
 }
 
+void test(){
+    assert(checkGuess(0, 0) == 0);
+    assert(checkGuess(10, 5) == 1);
+    assert(checkGuess(5, 10) == 2);
+    printf("%s\n", "all test cases passed...\n");
+    
+}
 
