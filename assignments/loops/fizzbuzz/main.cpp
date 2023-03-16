@@ -8,10 +8,12 @@ Print integers from
  with Buzz and ones divisible by both with FizzBuzz.*/
 
 #include <iostream>
+#include <cassert>
 
 using namespace std; 
 
 void out(int x, int y, int n);
+void test();
 
 int main(){
     int x, y, n; 
@@ -35,4 +37,12 @@ void out(int x, int y, int n){
         
     }
 
+}
+
+void test(){
+
+    int x, y, n;
+
+
+    cerr << "Local test cases passed!\n";
 }
