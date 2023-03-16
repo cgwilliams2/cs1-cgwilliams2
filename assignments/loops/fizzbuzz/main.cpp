@@ -17,7 +17,15 @@ void out(int x, int y, int n);
 void test();
 string check = "";
 
-int main(){
+int main(int argc, char* argv[]) {
+    if(argc == 2 && string(argv[1]) == "test") {
+        test();
+        exit(EXIT_SUCCESS); // exit the program
+    }
+
+
+
+
     int x, y, n; 
     cin >> x >> y >> n; 
     out(x, y, n);
@@ -57,16 +65,14 @@ void out(int x, int y, int n){
 
 void test(){
     int x, y, n;
-    string ans; 
     x = 2;
     y = 3;
     n = 7;
-    ans = "4121434";
     out(x, y, n);
-    assert(ans-check;)
+    assert(check == "4121434");
 
     
 
 
-    cerr << "Local test cases passed!\n";
+    cerr << "All test cases passed!\n";
 }
