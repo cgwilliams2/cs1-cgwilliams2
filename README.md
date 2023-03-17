@@ -63,9 +63,9 @@
 | Name |  HW5 |
 | Description | GuessNumber and Kattis FizzBuzz  |
 | Due Date | 03/17/2023 |
-| Status | Done with GuessNumber |
+| Status | Done with GuessNumber and Fizz Buzz |
 | Location |https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/assignments/conditionals |
-| Self Grade | 100/ |
+| Self Grade | 100/100 |
 | Notes | none  |
 
 
