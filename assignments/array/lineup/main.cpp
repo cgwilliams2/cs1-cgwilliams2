@@ -2,10 +2,12 @@
 // Kattis Line Them Up
 
 #include <iostream> 
+#include <cassert>
 
 using namespace std; 
 
 void test();
+void run();
 
 int main(int argc, char* argv[]) {
     if(argc == 2 && string(argv[1]) == "test") {
@@ -13,9 +15,15 @@ int main(int argc, char* argv[]) {
         exit(EXIT_SUCCESS); // exit the program
     }
 
+    run();
 
 
 
+
+   return 0; 
+}
+
+void run(){
     int n; 
     cin >> n; 
     string nameIn; 
@@ -51,11 +59,16 @@ int main(int argc, char* argv[]) {
      cout << "NEITHER" << endl;
     }
 
-
-   return 0; 
 }
 
-
 void test(){
-    
+
+5
+JOE
+BOB
+ANDY
+AL
+ADAM
+run();
+
 }
