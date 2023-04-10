@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
 }
 
 string answer(const string &line) {
-    // FIXME3 - implement algorithm step 2; return "hiss" or "no hiss"
+    // FIXME3 - implement algorithm step 2; return "hiss" or "no hiss"  FIXED
     if(line.find("ss") == string::npos)
         return "no hiss";
     return "hiss";
@@ -39,8 +39,13 @@ string answer(const string &line) {
 
 // unit testing answer()
 void testAnswer() {
-    // FIXME4 - write at least two test cases to test answer()
-    
+    // FIXME4 - write at least two test cases to test answer()  FIXED 
+    string test = "test";
+    assert(answer(test) == "no hiss");
+    test = "hiss"; 
+    assert(answer(test) == "hiss");
+
+
     cerr << "All test cases passed!\n";
 }
 
@@ -48,7 +53,7 @@ void testAnswer() {
 void solve() {
     string line;
     // Note: string consists of only lowercase letters (no spaces) upto 30 chars
-    // FIXME5 - read string into line
+    // FIXME5 - read string into line  FIXED 
     cin >> line;
     cout << answer(line) << endl;
 }
