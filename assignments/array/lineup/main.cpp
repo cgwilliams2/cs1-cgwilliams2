@@ -9,6 +9,7 @@ using namespace std;
 void test();
 void run();
 
+
 int main(int argc, char* argv[]) {
     if(argc == 2 && string(argv[1]) == "test") {
         test();
@@ -61,6 +62,8 @@ void run(){
 
 }
 
+
+
 void test(){
 
 5
@@ -70,5 +73,6 @@ ANDY
 AL
 ADAM
 run();
+
 
 }
