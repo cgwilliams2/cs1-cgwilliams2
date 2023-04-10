@@ -1,8 +1,8 @@
 /*
 Kattis - Hissing Microphone Problem
 
-Updated By: FIXME1
-Date: FIXME2
+Updated By: Colton Williams
+Date: 04/10/2023
 
 Problem Statement: https://open.kattis.com/problems/hissingmicrophone
 Algorithm steps:
@@ -32,12 +32,15 @@ int main(int argc, char* argv[]) {
 
 string answer(const string &line) {
     // FIXME3 - implement algorithm step 2; return "hiss" or "no hiss"
+    if(line.find("ss") == string::npos)
+        return "no hiss";
     return "hiss";
 }
 
 // unit testing answer()
 void testAnswer() {
     // FIXME4 - write at least two test cases to test answer()
+    
     cerr << "All test cases passed!\n";
 }
 
@@ -46,5 +49,6 @@ void solve() {
     string line;
     // Note: string consists of only lowercase letters (no spaces) upto 30 chars
     // FIXME5 - read string into line
+    cin >> line;
     cout << answer(line) << endl;
 }
