@@ -69,6 +69,39 @@
 | Notes | none  |
 
 
+| Name | Value |
+| :--- | :--- |
+| Name | HW6 Array  |
+| Description |   |
+| Due Date |  |
+| Status | |
+| Location | |
+| Self Grade |  |
+| Notes |   |
+
+
+| Name | Value |
+| :--- | :--- |
+| Name | HW7 String |
+| Description |   |
+| Due Date |  |
+| Status | |
+| Location | |
+| Self Grade |  |
+| Notes |   |
+
+
+| Name | Value |
+| :--- | :--- |
+| Name |   |
+| Description |   |
+| Due Date |  |
+| Status | |
+| Location | |
+| Self Grade |  |
+| Notes |   |
+
+
 
 ## Labs
 
@@ -127,6 +160,40 @@
 | Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/lab5 |
 | Self Grade | 100/100 |
 | Notes | N/A |
+
+
+| Name | Value |
+| :--- | :--- |
+| Name | Lab6 Pointers and namespace|
+| Description |   |
+| Due Date |  |
+| Status |  |
+| Location |  |
+| Self Grade |  |
+| Notes | N/A |
+
+
+| Name | Value |
+| :--- | :--- |
+| Name | Lab8 Array|
+| Description |   |
+| Due Date |  |
+| Status |  |
+| Location |  |
+| Self Grade |  |
+| Notes | N/A |
+
+
+| Name | Value |
+| :--- | :--- |
+| Name | Lab7 Strings|
+| Description |   |
+| Due Date |  |
+| Status |  |
+| Location |  |
+| Self Grade |  |
+| Notes | N/A |
+
 
 
 
