@@ -36,10 +36,11 @@ int main(int argc, char* argv[]) {
 
 string answer(const string &line) {
     string ansRun = line;
+  
   // FIXME2: If the line starts with "Simon says", return rest of the line after says FIXED
   if(line.find("Simon says ") != string::npos){
   
-    ansRun.erase(0, 11);
+    ansRun.erase(0, 10);
     return ansRun; 
   }
 
@@ -56,6 +57,9 @@ void testAnswer() {
   cerr << "ans = " << ans << endl;
   assert(ans == " laugh!"); 
   assert(answer("Write more programs.") == "");
+  assert(answer("Simon says turn around") == " turn around");
+  assert(answer("Turn around") == "");
+  assert(answer("Simon says jump up and down twice") == " jump up and down twice");
   // FIXME3: write at least two test cases to test answer()
   cerr << "All test cases passed!\n";
 }
@@ -64,7 +68,8 @@ void testAnswer() {
 void solve() {
   string ans="", line="";
   int N;
-  cin >> N; 
+  cin >> N;
+    N++;
   //FIXME4 : read and discard \n left behind FIXED
   while (N--) {
     // Note: i. string consists of phrase with spaces
@@ -75,5 +80,6 @@ void solve() {
     ans = answer(line); 
     if (ans == "") continue;
     // FIXME7: print ans
+    cout << ans << endl; 
   }
 }

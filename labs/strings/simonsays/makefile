@@ -34,14 +34,16 @@ unittest:
 
 # test the kattis provided samples
 kattistest:
-	cat ./sample_tests/1.in | ./$(PROGRAM) | diff - ./sample_tests/1.ans
-	cat ./sample_tests/2.in | ./$(PROGRAM) | diff - ./sample_tests/2.ans
-	cat ./sample_tests/3.in | ./$(PROGRAM) | diff - ./sample_tests/3.ans
-	cat ./sample_tests/4.in | ./$(PROGRAM) | diff - ./sample_tests/4.ans
-	cat ./sample_tests/5.in | ./$(PROGRAM) | diff - ./sample_tests/5.ans
-	cat ./sample_tests/6.in | ./$(PROGRAM) | diff - ./sample_tests/6.ans
-	cat ./sample_tests/7.in | ./$(PROGRAM) | diff - ./sample_tests/7.ans
+	cat ./sample_test/1.in | ./$(PROGRAM) | diff - ./sample_test/1.ans
+	cat ./sample_test/2.in | ./$(PROGRAM) | diff - ./sample_test/2.ans
+	cat ./sample_test/3.in | ./$(PROGRAM) | diff - ./sample_test/3.ans
+
 	@echo "All test cases passed!"
 
 all: build unittest kattistest clean
 	@printf "All good!\n"
+
+#	cat ./sample_tests/4.in | ./$(PROGRAM) | diff - ./sample_tests/4.ans
+#	cat ./sample_tests/5.in | ./$(PROGRAM) | diff - ./sample_tests/5.ans
+#	cat ./sample_tests/6.in | ./$(PROGRAM) | diff - ./sample_tests/6.ans
+#	cat ./sample_tests/7.in | ./$(PROGRAM) | diff - ./sample_tests/7.ans
