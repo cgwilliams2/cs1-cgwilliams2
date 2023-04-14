@@ -1,6 +1,6 @@
 //  Pointers, enum type and namespace lab
-//  Updated by: FIXME
-//  Date: FIXME
+//  Updated by: Colton Williams
+//  Date: 04/14/2023
 //  Program demonstrates the use of preprocessor directive, namespace, enum type,
 //  and pointers.
 
@@ -42,7 +42,15 @@ OPERATION getOperation(char);
 void unittest();
 
 int main(int argc, char* argv[]) {
-    // FIXME1 - Call unittest function if "test" argument is passed to main
+    if (argc == 2 and string(argv[1]) == "test"){
+        unittest();
+        return 0; 
+        }
+    else
+        
+}
+
+    // FIXME1 - Call unittest function if "test" argument is passed to main FIXED
     // exit the program after calling unittest
 
     char input;
@@ -51,6 +59,7 @@ int main(int argc, char* argv[]) {
     big_int *num2 = new big_int; //declare num2 as a dynamic variable
     large_int *sum = new large_int; //declare sum as a dynamic variable
     large_int *prod = new large_int;
+    large_int
     // FIXME2 - declare dynamic variables to store difference and larger values
     // Must use these variables to store the returned values from functions
 
@@ -99,7 +108,7 @@ void showMenu(void) {
     cout << "[1] Add two integers\n";
     cout << "[2] Multiply two integers\n";
     cout << "[3] Subtract one integer from another\n";
-    cout << "[4] Find the larger of two integers\n",
+    cout << "[4] Find the larger of two integers\n";
     cout << "[5] Quit the program\n";
     cout << "Enter your choice [1-4]: ";
 }
@@ -118,7 +127,9 @@ OPERATION getOperation(char choice) {
         case '3':
             op = SUBTRACT;
             break;
-        // FIXME6 - add case for LARGER
+        case '4':
+            op = LARGER;  // FIXME6 - add case for LARGER FIXED
+            break;
         default:
             op = QUIT;
     }
