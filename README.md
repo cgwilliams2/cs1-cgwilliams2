@@ -187,11 +187,11 @@
 | Name | Value |
 | :--- | :--- |
 | Name | Lab7 Strings|
-| Description |   |
-| Due Date |  |
-| Status |  |
-| Location |  |
-| Self Grade |  |
+| Description |  Hissing microphone and simon says labs |
+| Due Date | 04/14/2023 |
+| Status | Done |
+| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/strings |
+| Self Grade | 100/100 |
 | Notes | N/A |
 
 
