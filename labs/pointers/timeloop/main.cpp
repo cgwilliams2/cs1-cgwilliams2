@@ -1,6 +1,6 @@
 //  Pointers, enum type and namespace lab
-//  Updated by: FIXME
-//  Date: FIXME
+//  Updated by: Colton Williams
+//  Date: 04/17/2023
 //  Program demonstrates the use of preprocessor directive, namespace, enum type,
 //  and pointers.
 
@@ -41,8 +41,14 @@ void showMenu(void);
 OPERATION getOperation(char);
 void unittest();
 
-int main(int argc, char* argv[]) {
-    // FIXME1 - Call unittest function if "test" argument is passed to main
+  int main(int argc, char* argv[]) {
+    if (argc == 2 and string(argv[1]) == "test"){
+        unittest();
+        return 0; 
+        }
+    
+
+    // FIXME1 - Call unittest function if "test" argument is passed to main FIXED
     // exit the program after calling unittest
 
     char input;
@@ -51,6 +57,8 @@ int main(int argc, char* argv[]) {
     big_int *num2 = new big_int; //declare num2 as a dynamic variable
     large_int *sum = new large_int; //declare sum as a dynamic variable
     large_int *prod = new large_int;
+    large_int *diff = new large_int;
+    big_int *larger = new big_int; 
     // FIXME2 - declare dynamic variables to store difference and larger values
     // Must use these variables to store the returned values from functions
 
@@ -58,6 +66,8 @@ int main(int argc, char* argv[]) {
     
     //FIXME3: Add do... while loop to continue the program until the user wants to quit
     //FIXME4: call clear function defined above to clear the screen
+    clear();
+    do {
     showMenu();
     cin >> input;
     oper = getOperation(input);
@@ -79,14 +89,34 @@ int main(int argc, char* argv[]) {
             *prod = MyFunctions::findProduct(*num1, *num2);
             printf("%lld * %lld = %lld\n", *num1, *num2, *prod);
             break;
+        case SUBTRACT:
+            cout << "Enter two whole numbers separated by space: ";
+            // store the data by dereferencing pointers
+            cin >> *num1 >> *num2;
+            // passing dereferences (actural addresses) of num1 and num2
+            *diff = MyFunctions::findDifference(*num1, *num2);
+            printf("%lld - %lld = %lld\n", *num2, *num1, *diff);
+            break;
+        case LARGER:
+            cout << "Enter two whole numbers separated by space: ";
+            // store the data by dereferencing pointers
+            cin >> *num1 >> *num2;
+            // passing dereferences (actural addresses) of num1 and num2
+            *larger = MyFunctions::findLarger(num1, num2);
+            printf("%lld, %lld |  %lld is bigger\n", *num1, *num2, *larger);
+            break; 
         default:
             break;
     }
+    }while (oper != QUIT);
     // delete/deallocate/free memory occupied by all the dynamic variables
     delete num1;
     delete num2;
     delete sum;
     delete prod;
+    delete diff;
+    delete larger;
+
     cin.ignore(1000, '\n');
     cout << "Good bye! Enter to exit the program...";
     cin.get();
@@ -118,9 +148,12 @@ OPERATION getOperation(char choice) {
         case '3':
             op = SUBTRACT;
             break;
-        // FIXME6 - add case for LARGER
+        case '4':
+            op = LARGER;
+            break;     // FIXME6 - add case for LARGER FIXED
         default:
             op = QUIT;
+        
     }
     return op;
 }
@@ -131,8 +164,16 @@ big_int MyFunctions::findSum(const big_int *n1, const big_int *n2) {
     return (*n1) + (*n2);
 }
 
-// FIXME7: define findLarger function declared inside MyFunctions namespace
+// FIXME7: define findLarger function declared inside MyFunctions namespace FIXED 
 // function returns the larger of the two given numbers
+
+big_int MyFunctions::findLarger(const big_int *n1, const big_int *n2) {
+
+    if((*n1) > (*n2))
+        return (*n1); 
+    else return (*n2); 
+} 
+
 
 // find Product function definition
 large_int MyFunctions::findProduct(const large_int &n1, const large_int &n2) {
@@ -141,6 +182,10 @@ large_int MyFunctions::findProduct(const large_int &n1, const large_int &n2) {
 
 // FIXME8: define findDifference function declared inside MyFunctions namespace
 // return the value of second big_int subtracted from the first
+large_int  MyFunctions::findDifference(const large_int &n1, const large_int &n2) {
+
+    return n2 - n1; 
+}
 
 // function to unittest other functions
 void unittest() {
