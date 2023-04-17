@@ -197,7 +197,19 @@ void unittest() {
     ans = new big_int;
     *ans = MyFunctions::findSum(n1, n2);
     assert(*ans == 1099999999);
-
+    *n1 = 93;
+    *n2 = 837;
+    *ans = MyFunctions::findLarger(n1, n2);
+    assert(*ans == 837);
+    *n1 = 50;
+    *n2 = 25;
+    *ans = MyFunctions::findDifference(*n1, *n2);
+    assert(*ans == -25);
+    *n1 = 5;
+    *n2 = 20;
+    *ans = MyFunctions::findProduct(*n1, *n2);
+    assert(*ans == 100);
+    
     cerr << "Yay... All test cases passed!\n";
     // FIXME9: Test findProduct, findDifference and findLarger functions with atleast 1 test case
     // FIXME10: Delete all the dynamic variables
