@@ -165,11 +165,11 @@
 | Name | Value |
 | :--- | :--- |
 | Name | Lab6 Pointers and namespace|
-| Description |   |
+| Description |  pointersNamespace and timeloop |
 | Due Date |  |
-| Status |  |
-| Location |  |
-| Self Grade |  |
+| Status | Done |
+| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/pointers |
+| Self Grade | 100/100 |
 | Notes | N/A |
 
 
