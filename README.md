@@ -176,11 +176,11 @@
 | Name | Value |
 | :--- | :--- |
 | Name | Lab8 Array|
-| Description |   |
-| Due Date |  |
-| Status |  |
-| Location |  |
-| Self Grade |  |
+| Description | Array Numbers Lab  |
+| Due Date | 04/08/2023 |
+| Status | Done |
+| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/arrays |
+| Self Grade | 100/100 |
 | Notes | N/A |
 
 
