@@ -1,9 +1,9 @@
 /*
 Kattis - Stuck In A Time Loop
 Loop Lab
-Updated By: FIXME
+Updated By: Colton Williams
 CSCI 111
-Date: FIXME
+Date: 04/15/2023
 
 Read and solve the Kattis problem: https://open.kattis.com/problems/timeloop  
 
@@ -72,6 +72,10 @@ void testSpell() {
   pos_short * n = new pos_short;
   *n = 10;
   assert(spell(*n) == "10 Abracadabra");
+  *n = 15;
+  assert(spell(*n) == "15 Abracadabra");
+  *n = 38;
+  assert(spell(*n) == "38 Abracadabra");
   // FIXME5: Add two more test cases
   delete n;
   cerr << "Yay... all test cases passed!\n";
