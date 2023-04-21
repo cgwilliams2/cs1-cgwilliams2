@@ -11,7 +11,7 @@ CXXFLAGS = -c -g -Wall -std=c++17
 PROGRAM = fileio.exe
 
 # list .cpp files separated by space
-CPPFILES = fileio.cpp
+CPPFILES = main.cpp
 
 # make all rule/default rule that'll be run when we run "make"
 # first compile each file to object file
@@ -23,10 +23,13 @@ build:
 # make clean rule
 # delete object and binary files
 clean:
-	rm -f $(PROGRAM) *.o
+	rm -f $(PROGRAM) *.o 
 
 # FIXME
 # add a rule to run the program
+run:
+	./$(PROGRAM)
+	
 
 # rule to run unittest
 unittest:

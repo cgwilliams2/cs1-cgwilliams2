@@ -1,8 +1,8 @@
 /*
     CS1 - File IO Lab
 
-    Updated by: FIXME
-    Date: FIXME
+    Updated by: Colton Williams
+    Date: 04/21/2023
 
     The program reads numbers from a file and finds statistical values from those numbers.
     Lab demonstrates the file io and vector application. 
@@ -53,8 +53,12 @@ int main(int argc, char* argv[]) {
 
 void readData(vector<int> & numbers, const string inputFileName) {
     // FIXME1: Open inputFileName for reading data
+    ifstream inputFile("input.txt");
     // read the data until eof marker and store each num into numbers vector
     int num;
+    while (inputFile >> num) {
+        numbers.push_back(num);
+    }
 }
 
 void writeData(const vector<int> & numbers) {
@@ -65,7 +69,31 @@ void writeData(const vector<int> & numbers) {
     2. Store and use the file name to open the file in write mode
     3. Write output as shown in output.txt file with proper formatting using iomanip
     */
+   string fileOutName; 
+   cout << "Enter an output file name: "; 
+   cin >> fileOutName; 
+
+   ofstream outputFile(fileOutName); 
+
+   outputFile << "List of Numbers:";
+   for(int n: numbers)
+        outputFile << " " << n;
+   outputFile << endl << endl; 
+
+    outputFile << "========================================" << endl;
+    outputFile << "          Statistical Results" << endl;
+    outputFile << "========================================" << endl;
+    outputFile << "Max     Min     Mean     Median    Range" << endl;
+    outputFile << setw(4) << findMax(numbers) << "    ";
+    outputFile << setw(4) << findMin(numbers) << "    ";
+    outputFile << setw(7) << fixed << setprecision(2) << findMean(numbers) << "    ";
+    outputFile << setw(7) << fixed << setprecision(2) << findMedian(numbers) << "    ";
+    outputFile << setw(4) << findRange(numbers) << endl;
 }
+
+
+
+
 
 int findMax(const vector<int> & nums) {
     int max = nums[0];
@@ -76,7 +104,10 @@ int findMax(const vector<int> & nums) {
 
 int findMin(const vector<int> & nums) {
     // FIXME3 - implement function to find and return min value in nums vector
-    return 0;
+    int min = nums[0];
+    for(int n: nums)
+        min = (n<min) ? n : min;
+    return min;
 } 
 
 float findMean(const vector<int> & nums) {
@@ -90,7 +121,9 @@ float findMean(const vector<int> & nums) {
 int findRange(const vector<int> & nums) {
     // FIXME6 - implement function that finds and returns the range value
     // range = max - min
-    return 0;
+    int max = findMax(nums);
+    int min = findMin(nums);
+    return max - min;
 }
 
 float findMedian(vector<int> nums) {
