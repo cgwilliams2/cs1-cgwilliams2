@@ -46,6 +46,7 @@ int main(int argc, char* argv[]) {
     getline(cin, inFile);
     readData(numbers, inFile);
     writeData(numbers);
+    cin.ignore();
     cout << "All done. Enter to exit...";
     cin.get();
     return 0;
@@ -86,8 +87,8 @@ void writeData(const vector<int> & numbers) {
     outputFile << "Max     Min     Mean     Median    Range" << endl;
     outputFile << setw(4) << findMax(numbers) << "    ";
     outputFile << setw(4) << findMin(numbers) << "    ";
-    outputFile << setw(7) << fixed << setprecision(2) << findMean(numbers) << "    ";
-    outputFile << setw(7) << fixed << setprecision(2) << findMedian(numbers) << "    ";
+    outputFile << setw(4) << fixed << setprecision(2) << findMean(numbers) << "    ";
+    outputFile << setw(4) << fixed << setprecision(2) << findMedian(numbers) << "    ";
     outputFile << setw(4) << findRange(numbers) << endl;
 }
 
@@ -143,10 +144,14 @@ void test() {
     assert(fabs(findMean(numbers)-17.857142) <= EPSILON );
     assert(findMax(numbers) == 100);
     assert(findMedian(numbers) == 10);
+    assert(findMin(numbers) == -99);
+    assert(findRange(numbers) == 199);
     vector<int> numbers1 = {10, 10, 10, 0, -10, -10};
     assert(fabs(findMean(numbers1) -1.6667) <= EPSILON  );
     assert(findMax(numbers1) == 10);
     assert(findMedian(numbers1) == 5);
+    assert(findMin(numbers1) == -10);
+    assert(findRange(numbers1) == 20);
     // FIXME7: Write at least two test cases for other functions
 
     cerr << "all test cases passed!\n";
