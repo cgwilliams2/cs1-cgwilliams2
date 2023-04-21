@@ -175,22 +175,22 @@
 
 | Name | Value |
 | :--- | :--- |
-| Name | Lab8 Array|
-| Description | Array Numbers Lab  |
-| Due Date | 04/08/2023 |
+| Name | Lab7 Strings|
+| Description |  Hissing microphone and simon says labs |
+| Due Date | 04/14/2023 |
 | Status | Done |
-| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/arrays |
+| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/strings |
 | Self Grade | 100/100 |
 | Notes | N/A |
 
 
 | Name | Value |
 | :--- | :--- |
-| Name | Lab7 Strings|
-| Description |  Hissing microphone and simon says labs |
-| Due Date | 04/14/2023 |
+| Name | Lab8 Array|
+| Description | Array Numbers Lab  |
+| Due Date | 04/08/2023 |
 | Status | Done |
-| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/strings |
+| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/arrays |
 | Self Grade | 100/100 |
 | Notes | N/A |
 
