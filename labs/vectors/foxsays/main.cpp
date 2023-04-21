@@ -1,9 +1,9 @@
 /*
 Kattis - What does the fox say?
 Vector Lab
-Updated By: FIXME
+Updated By: Colton Williams
 CSCI 111
-Date: FIXME
+
 
 Read and solve the Kattis problem: https://open.kattis.com/problems/whatdoesthefoxsay   
 
@@ -42,7 +42,8 @@ void unit_test();
 
 int main(int argc, char* argv[]) {
   if (argc == 2 and string(argv[1]) == string("test")) {
-    // FIXME1: call unit_test function
+    // FIXME1: call unit_test function FIXED 
+    unit_test();
   }
   // read the total number of test cases
   else
@@ -75,6 +76,7 @@ void solve() {
       eraseAnimalSound(recordings, sound);
     }
     // FIXME2: call foxSays function and print the returned answer
+    cout << foxSays(recordings) << endl; 
   }
 }
 
@@ -106,6 +108,14 @@ void eraseAnimalSound(vector<string> &recordings, string sound) {
   // FIXME3 - use iterator to erase all matching sound
   // if iterator points to sound, erase it and update it with the next element pointer
   // otherwise, just increment the iterator
+  for (auto it = recordings.begin(); it != recordings.end(); ) {
+    if (*it == sound) {
+      it = recordings.erase(it);
+    } else {
+      ++it;
+    }
+  }
+
 }
 
 void test_splitString() {
@@ -118,6 +128,14 @@ void test_splitString() {
   vector<string> expected1 = {"two", "word"};
   assert(answer == expected1);
   // FIXME4: add 2 more test cases
+  answer.clear();
+  splitString(answer, " ");
+  vector<string> expected2 = {};
+  assert(answer == expected2);
+  answer.clear();
+  splitString(answer, "this is a long string");
+  vector<string> expected3 = {"this", "is", "a", "long", "string"};
+  assert(answer == expected3);
   cerr << "splitString(): All test cases passed!)\n";
 }
 
@@ -127,6 +145,14 @@ void test_eraseAnimalSound() {
   vector<string> expected = {"boo", "meow", "ba", "wooon"};
   assert(recordings == expected);
   // FIXME5: add 2 more test cases
+  vector<string> recordings2 = {"meow", "meow", "purr", "hiss", "meow"};
+  eraseAnimalSound(recordings2, "meow");
+  vector<string> expected2 = {"purr", "hiss"};
+  assert(recordings2 == expected2);
+  vector<string> recordings3 = {"bark", "bark", "howl", "whimper", "bark"};
+  eraseAnimalSound(recordings3, "meow");
+  vector<string> expected3 = {"bark", "bark", "howl", "whimper", "bark"};
+  assert(recordings3 == expected3);
   cerr << "eraseAnimalSound(): All test cases passed!" << endl;
 }
 
@@ -138,6 +164,16 @@ void test_foxSays() {
   cerr << "ans = " << ans << endl;
   assert(ans == "boo meow ba wooon");
   // FIXME6: add 2 more test cases
+  recordings = {"meow", "woof", "moo", "quack", "meow", "woof", "moo"};
+  eraseAnimalSound(recordings, "meow");
+  ans = foxSays(recordings);
+  cerr << "ans = " << ans << endl;
+  assert(ans == "woof moo quack woof moo");
+  recordings = {"oink", "oink", "oink", "moo", "moo", "cluck", "cluck", "oink", "moo"};
+  eraseAnimalSound(recordings, "oink");
+  ans = foxSays(recordings);
+  cerr << "ans = " << ans << endl;
+  assert(ans == "moo moo cluck cluck moo");
   cerr << "foxSays(): All test cases passed!" << endl;
 }
 
