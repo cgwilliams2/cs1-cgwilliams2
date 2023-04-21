@@ -206,6 +206,19 @@
 | Notes | N/A |
 
 
+| Name | Value |
+| :--- | :--- |
+| Name | Lab10 FileIO|
+| Description |  File IO lab |
+| Due Date | 04/21/2023 |
+| Status | Done |
+| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/fileio |
+| Self Grade | 100/100 |
+| Notes | N/A |
+
+
+
+
 
 
 
