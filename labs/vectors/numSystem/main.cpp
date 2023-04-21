@@ -56,12 +56,18 @@ int main()
         choice = menuOption();
         switch(choice) {
             case 1:
-                // FIXME1
-                cout << "FIXME\n";
+                // FIXME1 
+                cout << "Enter a positive whole decimal number: ";
+                cin >> decimalNum;
+                binary = decToBin(decimalNum);
+                printf("(%llu) base 10 = (%s) base 2\n", decimalNum, binary.c_str());
                 break;
             case 2:
-                // FIXME2
-                cout << "FIXME\n";
+                // FIXME2 "2. Convert Binary to Decimal Number System\n"
+                cout << "Enter a binary number: ";
+                cin >> binary; 
+                decimalNum = binToDec(binary);
+                printf("(%s) base 2 = (%llu) base 10\n", binary.c_str(), decimalNum);
                 break;
             case 3:
                 cout << "Enter a positive whole decimal number: ";
@@ -93,14 +99,30 @@ int main()
 string decToBin(llu num) {
     // FIXME3 - implement algorithm step in DataTypesAndVariables.ipynb notes
     // or use hint from decToOct function
-    return to_string(num);
+    string binary = "";
+    while (num!= 0){
+        binary = to_string(num & 1) + binary;
+        num = num >> 1;  
+    }
+    return binary;
+   
 }
 
 llu binToDec(string binaryNumber)
 {
     // FIXME4 - implement algorithm described in DataTypesAndVariables.ipynb notes
     // or use hints from binToOct function
-    return 0;
+    llu decimalNum = 0;
+    int power = 0;
+    
+    for (int i = binaryNumber.size() - 1; i >= 0; --i) {
+       
+        if (binaryNumber[i] == '1') {
+            decimalNum += pow(2, power);
+        }
+        ++power;
+    }
+    return decimalNum;
 }
 
 string decToOct(llu num)
