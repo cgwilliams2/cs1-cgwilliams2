@@ -9,7 +9,7 @@
 
 void test();
 void run();
-string solve(int[]);
+string solve(int, int[]);
 
 using namespace std; 
 
@@ -29,25 +29,31 @@ void run(){
 int n;
 cin >> n;
 int pieces[n];
+
 for(int i = 0; i < n; i++){
     cin >> pieces[i];
 }
 
-cout << solve(pieces) << endl; 
+cout << solve(n, pieces) << endl; 
 
 
 }
 
 
-string solve(int pieces[]){
+string solve(int n, int pieces[]){
     int b, a; 
     bool alice = true;
     bool bob = false;
     bool done = false; 
     do {
         if(alice){
-            for(int i = 0; i < pieces.size())
-
+            int p = pieces[0];
+            for(int i = 0; i < n; i++){
+                if(pieces[i] > p)
+                    p  = pieces[i];
+                }
+            
+         
         }
         else if(bob){
 
