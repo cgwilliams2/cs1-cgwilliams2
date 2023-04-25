@@ -4,10 +4,14 @@
 
 #include <iostream>
 #include <cassert>
+#include <cstdlib>
+#include <cstdio>
 
 void test();
 void run();
-void solve();
+string solve(int[]);
+
+using namespace std; 
 
 
 int main(int argc, char* argv[]) {
@@ -32,5 +36,27 @@ for(int i = 0; i < n; i++){
 cout << solve(pieces) << endl; 
 
 
+}
+
+
+string solve(int pieces[]){
+    int b, a; 
+    bool alice = true;
+    bool bob = false;
+    bool done = false; 
+    do {
+        if(alice){
+            for(int i = 0; i < pieces.size())
+
+        }
+        else if(bob){
+
+        }
+        else
+            done = true;
+    }
+    while(!done); 
+
+    return " ";
 }
 
