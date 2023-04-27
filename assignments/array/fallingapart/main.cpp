@@ -26,9 +26,10 @@ int main(int argc, char* argv[]) {
 }
 
 void run(){
-int n;
+int n = 0; 
 cin >> n;
 int pieces[n];
+ 
 
 for(int i = 0; i < n; i++){
     cin >> pieces[i];
@@ -40,22 +41,48 @@ cout << solve(n, pieces) << endl;
 }
 
 
-string solve(int n, int pieces[]){
-    int b, a; 
+string solve(int n, int* pieces[]){
+    int a = 0;
+    int b = 0; 
     bool alice = true;
     bool bob = false;
     bool done = false; 
     do {
         if(alice){
-            int p = pieces[0];
+            int* p = pieces[0];
+            int count; 
             for(int i = 0; i < n; i++){
-                if(pieces[i] > p)
+                if(pieces[i] > p){
                     p  = pieces[i];
+                    count = i;
                 }
-            
-         
+                else if(p == 0)
+                    done = true; 
+                    
+                }
+            a = a + int(pieces[count]);
+            pieces[count] = 0;
+            alice = false; 
+            bob = true; 
+
+        
         }
         else if(bob){
+            int* p = pieces[0];
+            int count; 
+            for(int i = 0; i < n; i++){
+                if(pieces[i] > p){
+                    p  = pieces[i];
+                    count = i;
+                }
+                else if(p == 0)
+                    done = true; 
+                    
+                }
+            b = b + int(pieces[count]);
+            pieces[count] = 0;
+            bob = false; 
+            alice = true;  
 
         }
         else
@@ -63,6 +90,6 @@ string solve(int n, int pieces[]){
     }
     while(!done); 
 
-    return " ";
+    return a + " " + b;
 }
 

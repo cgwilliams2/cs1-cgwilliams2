@@ -86,19 +86,19 @@ void test(){
     names2[9] = "ALEX";
     names2[10] = "TOBIN"; 
     assert(ans(n, names2).compare("NEITHER") == 0); 
-    /*names[0] = "JOE";
+    names[0] = "AOE";
     names[1] = "BOB";
-    names[2] = "ANDY";
-    names[3] = "AL";
-    names[4] = "ADAM";
-    assert(ans(n, names).compare("DECREASING") == 0); 
-    names[0] = "JOE";
-    names[1] = "BOB";
-    names[2] = "ANDY";
-    names[3] = "AL";
-    names[4] = "ADAM";
-    assert(ans(n, names).compare("DECREASING") == 0); 
-    */
+    names[2] = "CNDY";
+    names[3] = "DL";
+    names[4] = "EDAM";
+    assert(ans(n, names).compare("INCREASING") == 0); 
+    names[0] = "SAM";
+    names[1] = "CALVIN";
+    names[2] = "RYAN";
+    names[3] = "JACK";
+    names[4] = "EASTON";
+    assert(ans(n, names).compare("NEITHER") == 0); 
+    
     cerr << "All unit tests passed!" << endl;
 
 

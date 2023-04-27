@@ -8,7 +8,7 @@ CXX = g++
 CXXFLAGS = -c -g -Wall -std=gnu++17
 
 # the build target executable file; .exe is not required
-PROGRAM = lineup.exe #FIXME
+PROGRAM = falling.exe #FIXME
 
 # list .cpp files separated by space
 CPPFILES = main.cpp #FIXME
