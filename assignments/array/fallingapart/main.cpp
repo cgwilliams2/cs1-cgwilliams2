@@ -4,14 +4,14 @@
 
 #include <iostream>
 #include <cassert>
-#include <cstdlib>
-#include <cstdio>
+#include <string>
+
+using namespace std; 
 
 void test();
 void run();
-string solve(int, int[]);
+string solve(int, int[], int[]);
 
-using namespace std; 
 
 
 int main(int argc, char* argv[]) {
@@ -19,7 +19,8 @@ int main(int argc, char* argv[]) {
         test();
         exit(EXIT_SUCCESS); // exit the program
     }
-
+    run();
+    cout << endl; 
     
 
   return 0; 
@@ -29,67 +30,98 @@ void run(){
 int n = 0; 
 cin >> n;
 int pieces[n];
+int ab[2];
+ab[0] = 0; 
+ab[1] = 0; 
  
 
 for(int i = 0; i < n; i++){
     cin >> pieces[i];
 }
 
-cout << solve(n, pieces) << endl; 
+solve(n, pieces, ab); 
 
 
 }
 
 
-string solve(int n, int* pieces[]){
-    int a = 0;
-    int b = 0; 
+string solve(int n, int pieces[], int ab[]){
     bool alice = true;
     bool bob = false;
-    bool done = false; 
+    bool run = true;
+    //cout << pieces[0] << " " << pieces[1] << " " << pieces[2] << " " << ab[0] << " " << ab[1] << endl; 
     do {
         if(alice){
-            int* p = pieces[0];
+            //cout << "Alice start " << pieces[0] << " " << pieces[1] << " " << pieces[2] << " " << ab[0] << " " << ab[1] << endl;
+            int p = pieces[0];
             int count; 
             for(int i = 0; i < n; i++){
                 if(pieces[i] > p){
+                   // cout << i << endl; 
                     p  = pieces[i];
                     count = i;
                 }
-                else if(p == 0)
-                    done = true; 
-                    
                 }
-            a = a + int(pieces[count]);
+            if(p == 0){
+                    run = false; 
+                    //cout << "P = 0" << endl;
+                } 
+                    
+                
+            ab[0] = ab[0] + pieces[count];
             pieces[count] = 0;
             alice = false; 
-            bob = true; 
+            bob = true;
+            //cout << "Alice end " << pieces[0] << " " << pieces[1] << " " << pieces[2] << " " << ab[0] << " " << ab[1] << endl;
+            
 
         
         }
         else if(bob){
-            int* p = pieces[0];
+            //cout << "Bob start " << pieces[0] << " " << pieces[1] << " " << pieces[2] << " " << ab[0] << " " << ab[1] << endl;
+            int p = pieces[0];
             int count; 
             for(int i = 0; i < n; i++){
                 if(pieces[i] > p){
+                   // cout << i << endl; 
                     p  = pieces[i];
                     count = i;
                 }
-                else if(p == 0)
-                    done = true; 
-                    
+            }
+            if(p == 0){
+                    run = false;
+                    //cout << "P = 0" << endl; 
                 }
-            b = b + int(pieces[count]);
+                    
+                
+            ab[1] = ab[1] + pieces[count];
             pieces[count] = 0;
             bob = false; 
-            alice = true;  
+            alice = true;
+            //cout << "Bob end " << pieces[0] << " " << pieces[1] << " " << pieces[2] << " " << ab[0] << " " << ab[1] << endl;  
 
         }
-        else
-            done = true;
+        
+        
     }
-    while(!done); 
+    while(run);
+    
+    cout << ab[0] << " " << ab[1];
+    return "";
+    
+}
 
-    return a + " " + b;
+void test(){
+    int n = 3; 
+    int pieces[n];
+    int ab[2];
+    ab[0] = 0;
+    ab[1] = 0; 
+    pieces[0] = 3; 
+    pieces[1] = 1;
+    pieces[2] = 2;
+    assert(solve(n, pieces, ab).compare("4 2") == 0);
+    
+ cerr << "All unit tests passed!" << endl;
 }
 
