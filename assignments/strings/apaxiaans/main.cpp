@@ -40,5 +40,12 @@ void test(){
     string t; 
     t = "roobert"; 
     assert(run(t).compare("robert") == 0);
+    t = "robert";
+    assert(run(t).compare("robert") == 0);
+    t = "ttteeesssttt";
+    assert(run(t).compare("test") == 0);
+    t = "rruunniinngg";
+    assert(run(t).compare("runing") == 0);
+
     cerr << "All unit tests passed!" << endl;
 }
