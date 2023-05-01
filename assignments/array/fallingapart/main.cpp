@@ -121,6 +121,32 @@ void test(){
     pieces[1] = 1;
     pieces[2] = 2;
     assert(solve(n, pieces, ab).compare("4 2") == 0);
+    n = 3;
+    ab[0] = 0;
+    ab[1] = 0; 
+    pieces[0] = 5; 
+    pieces[1] = 10;
+    pieces[2] = 8;
+    assert(solve(n, pieces, ab).compare("15 8") == 0);
+    n = 4;
+    ab[0] = 0;
+    ab[1] = 0; 
+    pieces[0] = 1; 
+    pieces[1] = 2;
+    pieces[2] = 2;
+    pieces[3] = 1;
+    assert(solve(n, pieces, ab).compare("3 3") == 0);
+    n = 6;
+    ab[0] = 0;
+    ab[1] = 0; 
+    pieces[0] = 1; 
+    pieces[1] = 8;
+    pieces[2] = 20;
+    pieces[3] = 22;
+    pieces[4] = 90;
+    pieces[5] = 6;
+    assert(solve(n, pieces, ab).compare("116 31") == 0);
+    
     
  cerr << "All unit tests passed!" << endl;
 }
