@@ -72,12 +72,12 @@
 | Name | Value |
 | :--- | :--- |
 | Name | HW6 Array  |
-| Description |   |
-| Due Date |  |
-| Status | |
-| Location | |
-| Self Grade |  |
-| Notes |   |
+| Description |  Lineup and Falling apart |
+| Due Date | 03/20/2023 |
+| Status | Done |
+| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/assignments/array |
+| Self Grade | 100/100 |
+| Notes | none  |
 
 
 | Name | Value |
