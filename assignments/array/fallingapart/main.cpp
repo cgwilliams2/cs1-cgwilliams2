@@ -17,7 +17,7 @@ string solve(int, int[], int[]);
 int main(int argc, char* argv[]) {
     if(argc == 2 && string(argv[1]) == "test") {
         test();
-        return 0; // exit the program
+        exit(EXIT_SUCCESS); // exit the program
     }
     run();
     cout << endl; 
@@ -39,7 +39,7 @@ for(int i = 0; i < n; i++){
     cin >> pieces[i];
 }
 
-solve(n, pieces, ab);
+cout << solve(n, pieces, ab); 
 
 
 }
@@ -54,7 +54,7 @@ string solve(int n, int pieces[], int ab[]){
         if(alice){
             //cout << "Alice start " << pieces[0] << " " << pieces[1] << " " << pieces[2] << " " << ab[0] << " " << ab[1] << endl;
             int p = pieces[0];
-            int count; 
+            int count = 0; 
             for(int i = 0; i < n; i++){
                 if(pieces[i] > p){
                    // cout << i << endl; 
@@ -80,7 +80,7 @@ string solve(int n, int pieces[], int ab[]){
         else if(bob){
             //cout << "Bob start " << pieces[0] << " " << pieces[1] << " " << pieces[2] << " " << ab[0] << " " << ab[1] << endl;
             int p = pieces[0];
-            int count; 
+            int count = 0;
             for(int i = 0; i < n; i++){
                 if(pieces[i] > p){
                    // cout << i << endl; 
@@ -105,23 +105,22 @@ string solve(int n, int pieces[], int ab[]){
         
     }
     while(run);
+    string ans = to_string(ab[0]) + " " + to_string(ab[1]);
     
-    cout << ab[0] << " " << ab[1];
-    return "";
+    return ans;
     
 }
 
 void test(){
-    int pieces[3];
+    int n = 3; 
+    int pieces[n];
     int ab[2];
     ab[0] = 0;
     ab[1] = 0; 
     pieces[0] = 3; 
     pieces[1] = 1;
     pieces[2] = 2;
-    //assert(solve(3, pieces, ab).compare("4 2") == 0);
-    solve(3, pieces, ab);
+    assert(solve(n, pieces, ab).compare("4 2") == 0);
     
  cerr << "All unit tests passed!" << endl;
 }
-
