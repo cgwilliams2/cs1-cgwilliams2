@@ -39,7 +39,7 @@ for(int i = 0; i < n; i++){
     cin >> pieces[i];
 }
 
-solve(n, pieces, ab); 
+solve(n, pieces, ab);
 
 
 }
@@ -112,15 +112,14 @@ string solve(int n, int pieces[], int ab[]){
 }
 
 void test(){
-    int n = 3; 
-    int pieces[n];
+    int pieces[3];
     int ab[2];
     ab[0] = 0;
     ab[1] = 0; 
     pieces[0] = 3; 
     pieces[1] = 1;
     pieces[2] = 2;
-    assert(solve(n, pieces, ab).compare("4 2") == 0);
+    assert(solve(3, pieces, ab).compare("4 2") == 0);
     
  cerr << "All unit tests passed!" << endl;
 }
