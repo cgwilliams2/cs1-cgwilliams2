@@ -1,3 +1,6 @@
+//Colton Williams Fileio HW grading tool
+
+
 #include <iostream>
 #include <fstream>
 #include <string>
