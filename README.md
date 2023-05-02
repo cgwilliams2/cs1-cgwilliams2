@@ -83,12 +83,12 @@
 | Name | Value |
 | :--- | :--- |
 | Name | HW7 String |
-| Description |   |
-| Due Date |  |
-| Status | |
-| Location | |
-| Self Grade |  |
-| Notes |   |
+| Description | Kattis apaxiaans and kattis Avion |
+| Due Date | 03/20/2023 |
+| Status | Done |
+| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/assignments/strings |
+| Self Grade | 100/100 |
+| Notes |  none |
 
 
 | Name | Value |
