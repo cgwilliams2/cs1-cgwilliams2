@@ -2,8 +2,8 @@
 Map Lab
 Kattis - Morse Code Palindromes
 
-Updatd By: FIXME
-Date: FIXME
+Updatd By: Colton Williams
+Date: 
 
 Solution to Morse Code Palindromes Problem: https://open.kattis.com/problems/morsecodepalindromes
 Algorithm steps:
@@ -59,14 +59,21 @@ int main(int argc, char* argv[]) {
 void solve() {
 	string phrase, morse;
 	// string is a phrase: with space, puncuation, lower and uppercase letters
-	// FIXME1 - step 2
+	// FIXME1 - step 2 FIXED
 	// read english phrase into phrase variable
-	// FIXME2 - step 3 
+    getline(cin, phrase);
+	// FIXME2 - step 3 FIXED
 	// convert phrase to morse code
-	// FIXME3 - step 4
+    morse = convertToMorse(phrase);
+	// FIXME3 - step 4 FIXED
 	// check if morse code is a palindrome calling isPalindrome function
-	// FIXME4 - step 5
+    bool is_palindrome = isPalindrome(morse);
+	// FIXME4 - step 5 FIXED
 	// print 1 if it is a palindrome, 0 otherwise
+    if(is_palindrome)
+        cout << "1" << endl;
+    else
+        cout << "0" << endl;
 }
 
 // function definitions
@@ -78,12 +85,21 @@ string convertToMorse(const string& phrase) {
 	for (char c : phrase) {
 		c = char(toupper(c));
 		// FIXME5 - find morse code for char c in morseCode map and append it to morse string
+        if (morseCode.find(c) != morseCode.end())
+            morse += morseCode[c];
+        else if (c == ' ')
+            morse += "";
 	}
+	// Remove any extra spaces at the beginning or end of the morse code string
+	size_t startpos = morse.find_first_not_of(" ");
+	size_t endpos = morse.find_last_not_of(" ");
+	if(startpos != string::npos && endpos != string::npos)
+		morse = morse.substr(startpos, endpos-startpos+1);
 	return morse;
 }
 
 bool isPalindrome(const string& morse) {
-	// FIXME6 - check if morse code is a palindrome
+    // FIXME6 - check if morse code is a palindrome
 	// return true if it is a palindrome, false otherwise
 	// Algorithm step: 
 		// compare first and last char
@@ -91,8 +107,92 @@ bool isPalindrome(const string& morse) {
 		// if they are the same, compare third and third last char
 		// repeat until all chars are compared until mid index or a mismatch is found
 		// NOTE: empty morse code is not a palindrome!
-	return true;
+    if(morse.empty())
+        return false;
+    if ((morse.find(" ") == string::npos) && morse.length() <= 3)
+        return true;
+    
+    
+    
+
+    // check if morse code is a palindrome
+    int i = 0;
+    int j = morse.length() - 1;
+
+    while (i < j) {
+        if (morse[i] != morse[j]) {
+            return false;
+        }
+        i++;
+        j--;
+    }
+
+    return true;
 }
+
+
+
+
+
+/*
+bool isPalindrome(const string& morse) {
+    // FIXME6 - check if morse code is a palindrome
+	// return true if it is a palindrome, false otherwise
+	// Algorithm step: 
+		// compare first and last char
+		// if they are the same, compare second and second last char
+		// if they are the same, compare third and third last char
+		// repeat until all chars are compared until mid index or a mismatch is found
+		// NOTE: empty morse code is not a palindrome!
+    if(morse.empty())
+        return false; 
+    if (morse.length() <= 1) {
+        return true;
+    }
+
+    // check if morse code is a palindrome
+    int i = 0;
+    int j = morse.length() - 1;
+
+    while (i < j) {
+        if (morse[i] != morse[j]) {
+            return false;
+        }
+        i++;
+        j--;
+    }
+
+    return true;
+}
+
+
+bool isPalindrome(const string& morse) {
+    // Check if the morse code string represents only one letter
+    if (morse.find(" ") == string::npos) {
+        return true;
+    }
+    
+    // Check if the morse code string is empty or contains only spaces
+    if (morse.empty() || morse.find_first_not_of(' ') == string::npos) {
+        return false;
+    }
+
+    // Check if the morse code string is a palindrome
+    int i = 0;
+    int j = morse.length() - 1;
+
+    while (i < j) {
+        if (morse[i] != morse[j]) {
+            return false;
+        }
+        i++;
+        j--;
+    }
+
+    return true;
+}
+*/
+
 
 void testConvertToMorse() {
 	assert(convertToMorse("A") == ".-");
@@ -102,23 +202,38 @@ void testConvertToMorse() {
 	assert(convertToMorse("AaBb") == ".-.--...-...");
 	assert(convertToMorse("Race car!") == ".-..--.-..-.-..-.-.");
 	assert(convertToMorse("1881") == ".-------..---...----");
-	// FIXME7 - add 3 more test cases
+    assert(convertToMorse("Hello World!") == "......-...-..---.-----.-..-..-..");
+    assert(convertToMorse("SOS") == "...---...");
+    assert(convertToMorse("159")== ".----.....----."); 
+	// FIXME7 - add 3 more test cases FIXED 
+  
 }
 
 void testIsPalindrome() {
 	string morse = convertToMorse("A");
 	assert(isPalindrome(morse) == true);
+    cerr << convertToMorse("AaBb") << endl;
 	morse = convertToMorse("AaBb");
 	assert(isPalindrome(morse) == false);
+    cerr << convertToMorse("Race car!") << endl;
 	morse = convertToMorse("Race car!");
 	assert(isPalindrome(morse) == true);
+    cerr << convertToMorse("1881") << endl;
 	morse = convertToMorse("1881");
 	assert(isPalindrome(morse) == true);
-	// FIXME8 - add 3 more test cases
+    morse = convertToMorse("madam");
+    assert(isPalindrome(morse) == true);
+    morse = convertToMorse("Hi");
+    assert(isPalindrome(morse) == false);
+    morse = convertToMorse("test");
+    assert(isPalindrome(morse) == false);
+	// FIXME8 - add 3 more test cases FIXED 
 }
 
 // unit testing all functions
 void unittest() {
-  // FIXME9 - call all unit test functions
+  // FIXME9 - call all unit test functions FIXED 
+  testConvertToMorse();
+  testIsPalindrome();
   cerr << "All unittests passed!\n";
 }

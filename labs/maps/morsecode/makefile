@@ -29,7 +29,7 @@ unittest:
 	./$(PROGRAM) test
 
 # test the kattis provided samples
-kattis_test: # FIXME - add commands to test 2 more sample files
+kattis: # FIXME - add commands to test 2 more sample files
 	cat ./sample_tests/1.in | ./$(PROGRAM) | diff - ./sample_tests/1.ans
 	cat ./sample_tests/2.in | ./$(PROGRAM) | diff - ./sample_tests/2.ans
 	cat ./sample_tests/3.in | ./$(PROGRAM) | diff - ./sample_tests/3.ans
