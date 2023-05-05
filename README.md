@@ -93,7 +93,18 @@
 
 | Name | Value |
 | :--- | :--- |
-| Name |   |
+| Name | HW8 FileIO & Struct  |
+| Description | autom grading program  |
+| Due Date | 04/27/2023 |
+| Status | Done |
+| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/assignments/fileio |
+| Self Grade | 100/100  |
+| Notes | none  |
+
+
+| Name | Value |
+| :--- | :--- |
+| Name |  HW9 Map |
 | Description |   |
 | Due Date |  |
 | Status | |
