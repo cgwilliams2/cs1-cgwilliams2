@@ -28,6 +28,10 @@ clean:
 unittest:
 	./$(PROGRAM) test
 
+
+run: 
+	./$(PROGRAM)
+
 # test the kattis provided samples
 kattis: # FIXME - add commands to test 2 more sample files
 	cat ./sample_tests/1.in | ./$(PROGRAM) | diff - ./sample_tests/1.ans
