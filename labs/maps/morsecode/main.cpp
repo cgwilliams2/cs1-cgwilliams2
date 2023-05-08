@@ -116,16 +116,9 @@ bool isPalindrome(const string& morse) {
         return false;
      if ((morse.find(" ") == string::npos) && morse.length() <= 3)
         return true;
-        bool empty = true;
-        string test = " ";
-        for(int i = 0; i <= morse.length(); i++){
-            
-            if(morse[i] != test[0]){
-                empty = false;
-            }
-        }
-        if(empty)
-            return false; 
+     if(morse == "")
+        return false; 
+        
     
     
     
