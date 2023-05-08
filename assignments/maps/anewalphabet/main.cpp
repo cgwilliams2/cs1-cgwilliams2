@@ -54,6 +54,16 @@ string run(string line) {
 }
 
 void unittest(){
+    string test = "test";
+    assert(run(test).compare("']['3$']['") == 0);
+    test = "run";
+    assert(run(test).compare("|Z|_|[]\\[]") == 0);
+    test = "example";
+    assert(run(test).compare("3}{@[]\\/[]|D13") == 0);
+    test = "cat";
+    assert(run(test).compare("(@']['") == 0);
 
 
+
+ cerr << "All unit tests passed!" << endl;
 }
