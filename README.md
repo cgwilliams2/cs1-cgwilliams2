@@ -113,6 +113,17 @@
 | Notes |  none |
 
 
+| Name | Value |
+| :--- | :--- |
+| Name |  Final Project |
+| Description |   |
+| Due Date |  |
+| Status |  |
+| Location |  |
+| Self Grade |  |
+| Notes |   |
+
+
 
 ## Labs
 
@@ -224,6 +235,17 @@
 | Due Date | 04/21/2023 |
 | Status | Done |
 | Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/fileio |
+| Self Grade | 100/100 |
+| Notes | N/A |
+
+
+| Name | Value |
+| :--- | :--- |
+| Name | Lab11 Map|
+| Description |  Morse Code Lab |
+| Due Date | 05/08/2023 |
+| Status | Done |
+| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/labs/maps |
 | Self Grade | 100/100 |
 | Notes | N/A |
 
