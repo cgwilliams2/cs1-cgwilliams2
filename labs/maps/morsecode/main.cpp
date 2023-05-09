@@ -112,44 +112,44 @@ bool isPalindrome(const string& morse) {
         // if they are the same, compare third and third last char
         // repeat until all chars are compared until mid index or a mismatch is found
         // NOTE: empty morse code is not a palindrome!
-     if(morse.empty())
-        return false;
-     if ((morse.find(" ") == string::npos) && morse.length() <= 3)
-        return true;
-     if(morse == "")
-        return false; 
-        
-    
-    
-    
-    
-    
-    
+    bool r_val = true;
 
-     // check if morse code is a palindrome
-     int i = 0;
-     int j = morse.length() - 1;
+    if(morse == "")
 
-     while (i < j) {
-        if (morse[i] != morse[j]) {
-            return false;
+        r_val = false;
+
+    else
+
+    {
+
+        int mid_index = morse.size()/2;
+
+        int end = morse.size()-1;
+
+        for(int i=0;i<mid_index;i++)
+
+        {
+
+            if(morse[i] != morse[end-i])
+
+                r_val = false;
+
         }
-        i++;
-        j--;
-     }
 
- return true;
+    }
+
+    return r_val;
 }
 
 
 void testConvertToMorse() {
     assert(convertToMorse("A") == ".-");
-    assert(convertToMorse("9") == "----.");
-    assert(convertToMorse("Aa") == ".-.-");
-    cerr << convertToMorse("AaBb") << endl;
-    assert(convertToMorse("AaBb") == ".-.--...-...");
-    assert(convertToMorse("Race car!") == ".-..--.-..-.-..-.-.");
-    assert(convertToMorse("1881") == ".-------..---...----");
+	assert(convertToMorse("9") == "----.");
+	assert(convertToMorse("Aa") == ".-.-");
+	cerr << convertToMorse("AaBb") << endl;
+	assert(convertToMorse("AaBb") == ".-.--...-...");
+	assert(convertToMorse("Race car!") == ".-..--.-..-.-..-.-.");
+	assert(convertToMorse("1881") == ".-------..---...----");
     assert(convertToMorse("Hello World!") == "......-...-..---.-----.-..-..-..");
     assert(convertToMorse("SOS") == "...---...");
     assert(convertToMorse("159")== ".----.....----."); 
@@ -159,13 +159,13 @@ void testConvertToMorse() {
 
 void testIsPalindrome() {
     string morse = convertToMorse("A");
-    assert(isPalindrome(morse) == true);
-    morse = convertToMorse("AaBb");
-    assert(isPalindrome(morse) == false);
-    morse = convertToMorse("Race car!");
-    assert(isPalindrome(morse) == false);
-    morse = convertToMorse("1881");
-    assert(isPalindrome(morse) == false);
+	assert(isPalindrome(morse) == true);
+	morse = convertToMorse("AaBb");
+	assert(isPalindrome(morse) == false);
+	morse = convertToMorse("Race car!");
+	assert(isPalindrome(morse) == true);
+	morse = convertToMorse("1881");
+	assert(isPalindrome(morse) == true);
     morse = convertToMorse("madam");
     assert(isPalindrome(morse) == false);
     morse = convertToMorse("Hi");
@@ -182,5 +182,8 @@ void unittest() {
   testIsPalindrome();
   cerr << "All unittests passed!\n";
 }
+
+
+
 
 
