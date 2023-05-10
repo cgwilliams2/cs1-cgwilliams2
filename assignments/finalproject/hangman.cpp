@@ -23,7 +23,6 @@ void game();
 void gameRun();
 void printMenu();
 void printStats();
-void printStats();
 void gameStart();
 void changeDifficulty();
 string word(int difficulty);
