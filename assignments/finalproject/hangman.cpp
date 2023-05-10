@@ -28,6 +28,7 @@ void printStats();
 void gameStart();
 void changeDifficulty();
 string word(int difficulty);
+void debug();
 
 // varibles and word vectors
 vector<string> words;
@@ -64,8 +65,8 @@ int main(){
     string start;
     getline(cin, start);
     if(start != "Y" && start != "y"){
-        cout << "exiting..." << endl;
-        abort();
+        cout << "Exiting Program|||" << endl;
+        exit(EXIT_FAILURE);
     }
     else
     game();
@@ -73,7 +74,7 @@ int main(){
 
     
     
-    
+    clear();
     printStats();
  
 }
@@ -89,9 +90,10 @@ void game(){
     cout << "Game Started" << endl;
     
     
-    int menu;
+    int menu = 0;
     
     while(menu != 2){
+        cout << "Difficulty is: " << difficulty << endl; 
         printMenu();
         cin >> menu;
         if(menu == 1 ){
@@ -102,6 +104,8 @@ void game(){
             gameRun();
 
         }
+        if(menu == 1234)
+            debug();
 
     }
     
@@ -109,6 +113,7 @@ void game(){
 
 void gameStart(){
    gameWord = word(difficulty);
+   repGameWord = "";
    for(int i = 0; i < gameWord.length(); i++){ //makes string of _ _ _ representing unguessed letters
         repGameWord+="_";
         }
@@ -119,11 +124,14 @@ void gameRun(){
     gameStart();
     int numwg = 0;
     int numcg = 0; 
-    string letters, wrngLetters, letter, lettersEnt;
-    bool guess = false; 
+    string wrngLetters, letter, lettersEnt;
+    bool guess = false;
+    bool stop = false; 
    
 
-    while(numwg < 6){
+    while(!stop){
+        
+        clear();
         if(numwg == 0)
             cout << game0 << endl;
         if(numwg == 1)
@@ -136,18 +144,19 @@ void gameRun(){
             cout << game4 << endl;
         if(numwg == 5)
             cout << game5 << endl;
-        if(numwg == 6)
-            cout << game6 << endl;
-
+        
         cout << "Letters not in the word: " << wrngLetters << endl;
         cout << repGameWord << endl;
+        if(guess)
+            cout << "You guessed a correct letter!" << endl;
+        guess = false; 
 
-        cout << "Guess a letter then press enter: ";
+        cout << "Guess a letter then press Enter: " << endl;
         cin >> letter;
 
         while(letter.length() > 1){
              cout << "only enter one letter" << endl;
-            cout << "Guess a letter then press enter: ";
+            cout << "Guess a letter then press Enter: ";
             cin >> letter;
             for(int i = 0; i < lettersEnt.length(); i++){
                 if(letter[0] == lettersEnt[i]){
@@ -171,18 +180,47 @@ void gameRun(){
 
         if(!guess){
             numwg++;
-            wrngLetters = letter + " " + wrngLetters; 
+            wrngLetters = letter + " " + wrngLetters;
+            
         }
 
+        if(numwg == 6){
+            clear();
+            cout << game6 << endl;
+            cout << "  You  Lost :(" << endl;
+            cout << "Press Enter to continue" << endl;
+            cin.ignore();
+            if(cin.get() == '\n')
+            stop = true; 
+        
+        }
+
+        if(numcg == gameWord.length()){
+            clear();
+            cout << "   You Won!!" << endl;
+            cout << "The word was: " << gameWord << endl;
+            int total = numwg + numcg; 
+            cout << "It took you " << total << "trys to guess the word." << endl; 
+            cout << "Press Enter to coninue" << endl; 
+            cin.ignore();
+            if(cin.get() == '\n')
+            stop = true; 
+
+            
+        }
+     
+
+
 
        
-
-       
-
-     
-     
-        guess = false; 
+ 
     }
+
+
+    
+    
+            
+
 
 }
 
@@ -194,7 +232,12 @@ void changeDifficulty(){
     cout << "2 is words with 5-10 letters" << endl;
     cout << "3 is words with 11+" << endl;
     cout << "Type 1, 2, or 3 then press enter to change difficutly" << endl; 
-    cin >> difficulty; 
+    cin >> difficulty;
+    cout << "Difficulty is now: " << difficulty << endl;
+    cout << "Press Enter to continue" << endl; 
+    cin.ignore();
+    cin.get();
+    
 
 
 }
@@ -222,14 +265,19 @@ string word(int difficulty){
 
     }
 
+    else {
+        cout << "Exiting Program||| no word selected String Word()." << endl;
+        exit(EXIT_FAILURE);
+    }
+
     return "";
 }
 
 void printStats(){
-    cout << "         All stats calculted for this game session\n" << endl; 
-    cout << "Correct words guessed: " << "temp" << endl;
+    cout << "---->All stats calculted for this game session<----\n" << endl; 
+    cout << "You Won  " << "temp" << " times!" << endl;
     cout << "Correct guesses: " << "temp" << endl;
-    cout << "Correct words guessed: " << "temp" << endl;
+    cout << " Correct words guessed: " << "temp" << endl;
     cout << "Words not guessed: " << "temp" << endl;
     cout << "Incorrect gusses: " << "temp" << endl;
     
@@ -244,13 +292,14 @@ void printMenu(){
 }
 
 void sortWords(vector<string>& words, vector<string>& word1, vector<string>& word2, vector<string>& word3){
-    for (const auto& word : words)
+    cout << "Sorting Words" << endl; 
+    for(const auto& word : words)
     {
-        if (word.size() <= 4)
+        if(word.size() <= 4)
         {
             word1.push_back(word);
         }
-        else if (word.size() <= 10)
+        else if(word.size() <= 10 && word.size() > 4)
         {
             word2.push_back(word);
         }
@@ -269,17 +318,23 @@ void readFile(vector<string>& words)
 
     if (!inputFile)
     {
-        cout << "Error opening file." << endl;
-        abort();
+        cout << "Exiting Program||| Could not open file words.txt" << endl;
+        exit(EXIT_FAILURE);
     }
 
     string word;
     while (inputFile >> word)
     {
         words.push_back(word);
-       
     }
 
     inputFile.close();
+}
+
+void debug(){
+    cout << "DEBUG Selected Printing all info:" << endl; 
+    for(word)
+
+
 }
 
