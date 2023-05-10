@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <cstdlib>
+#include <ctime>
 
 
 using namespace std;
@@ -209,6 +210,7 @@ void gameRun(){
         for(int i = 0; i < gameWord.length(); i++){
             if(letter[0] == gameWord[i]){
                 numcg++;
+                totalRight++;
                 repGameWord[i] = letter[0];
                 guess = true; 
 
@@ -217,6 +219,7 @@ void gameRun(){
 
         if(!guess){
             numwg++;
+            totalWrong++;
             wrngLetters = letter + " " + wrngLetters;
             
         }
@@ -252,17 +255,7 @@ void gameRun(){
             
         }
      
-
-
-
-       
- 
-    }
-
-
-    
-    
-            
+    }       
 
 
 }
@@ -286,10 +279,12 @@ void changeDifficulty(){
 }
 
 void initialize(){
+    srand(time(0));
     readFile();
 }
 
 string word(int difficulty){
+
     if(difficulty == 1){
         int randomIndex = rand() % words1.size();
         return words1[randomIndex];
