@@ -18,12 +18,11 @@ using namespace std;
 
 //functions
 void initialize();
-void readFile(vector<string>& words);
+void readFile();
 void game();
 void gameRun();
 void printMenu();
 void printStats();
-void sortWords(vector<string>& words, vector<string>& word1, vector<string>& word2, vector<string>& word3);
 void printStats();
 void gameStart();
 void changeDifficulty();
@@ -31,12 +30,16 @@ string word(int difficulty);
 void debug();
 
 // varibles and word vectors
-vector<string> words;
 vector<string> words1;
 vector<string> words2;
 vector<string> words3;
 int difficulty = 2; 
 string gameWord, repGameWord;
+int timesWon = 0; 
+int timesLost = 0;
+int totalGuesses = 0;
+int totalWrong = 0;
+int totalRight = 0; 
 
 
 // gamestates
@@ -56,8 +59,8 @@ int main(){
     cout << "This game picks a word based on the difficulty you select." << endl;
     cout << "There are three levels of difficulty 1, 2, and 3" << endl;
     cout << "1 is words with 4 or less letters" << endl;
-    cout << "2 is words with 5-10 letters" << endl;
-    cout << "3 is words with 11+" << endl;
+    cout << "2 is words with 5-8 letters" << endl;
+    cout << "3 is words with 9+" << endl;
     cout << "Defualt difficulty is 2." << endl; 
     cout << "The words are only words in the English Dictionary" << endl; 
     cout << "You will have 6 trys to guess the word. " << endl;
@@ -76,7 +79,11 @@ int main(){
     
     clear();
     printStats();
- 
+
+
+    
+    
+    return 0; 
 }
 
 
@@ -126,10 +133,12 @@ void gameRun(){
     int numcg = 0; 
     string wrngLetters, letter, lettersEnt;
     bool guess = false;
-    bool stop = false; 
+    bool stop = false;
+    
    
 
     while(!stop){
+        bool newlet = false; 
         
         clear();
         if(numwg == 0)
@@ -146,9 +155,14 @@ void gameRun(){
             cout << game5 << endl;
         
         cout << "Letters not in the word: " << wrngLetters << endl;
-        cout << repGameWord << endl;
+        for(int i = 0; i < repGameWord.length(); i++){
+            cout << repGameWord[i] << " "; 
+        }
+        cout << endl; 
         if(guess)
             cout << "You guessed a correct letter!" << endl;
+        else if(numwg != 0)
+            cout << "You guessed incorrectly" << endl; 
         guess = false; 
 
         cout << "Guess a letter then press Enter: " << endl;
@@ -163,6 +177,30 @@ void gameRun(){
                     cout << "Letter alredy used. Try a difffernt letter" << endl; 
                     letter = "  ";
                 }
+            }
+        }
+
+        for(int i = 0; i < lettersEnt.length(); i++){
+                if(letter[0] == lettersEnt[i]){
+                  newlet = true;
+                    }
+            }
+
+        while(newlet){
+            for(int i = 0; i < lettersEnt.length(); i++){
+                if(letter[0] == lettersEnt[i]){
+                    cout << "Letter alredy used. Try a difffernt letter" << endl;
+                    cin >> letter; 
+                    
+                }
+                newlet = false; 
+                for(int i = 0; i < lettersEnt.length(); i++){
+                if(letter[0] == lettersEnt[i]){
+                  newlet = true;
+                    }
+                
+            }
+
             }
         }
 
@@ -188,7 +226,11 @@ void gameRun(){
             clear();
             cout << game6 << endl;
             cout << "  You  Lost :(" << endl;
+            cout << "The word was: " << gameWord << endl;
             cout << "Press Enter to continue" << endl;
+            timesLost++; 
+            int total = numcg + numwg;
+            totalGuesses += total;        
             cin.ignore();
             if(cin.get() == '\n')
             stop = true; 
@@ -199,8 +241,10 @@ void gameRun(){
             clear();
             cout << "   You Won!!" << endl;
             cout << "The word was: " << gameWord << endl;
-            int total = numwg + numcg; 
-            cout << "It took you " << total << "trys to guess the word." << endl; 
+            int total = numwg + numcg;
+            totalGuesses += total; 
+            timesWon++; 
+            cout << "It took you " << total << " trys to guess the word." << endl; 
             cout << "Press Enter to coninue" << endl; 
             cin.ignore();
             if(cin.get() == '\n')
@@ -229,8 +273,8 @@ void gameRun(){
 void changeDifficulty(){
     cout << "There are three levels of difficulty 1, 2, and 3" << endl;
     cout << "1 is words with 4 or less letters" << endl;
-    cout << "2 is words with 5-10 letters" << endl;
-    cout << "3 is words with 11+" << endl;
+    cout << "2 is words with 5-8 letters" << endl;
+    cout << "3 is words with 9+" << endl;
     cout << "Type 1, 2, or 3 then press enter to change difficutly" << endl; 
     cin >> difficulty;
     cout << "Difficulty is now: " << difficulty << endl;
@@ -243,25 +287,24 @@ void changeDifficulty(){
 }
 
 void initialize(){
-    readFile(words);
-    sortWords(words, words1, words2, words3);
+    readFile();
 }
 
 string word(int difficulty){
     if(difficulty == 1){
         int randomIndex = rand() % words1.size();
-        return words[randomIndex];
+        return words1[randomIndex];
     }
 
     if(difficulty == 2){
         int randomIndex = rand() % words2.size();
-        return words[randomIndex];
+        return words2[randomIndex];
 
     }
 
     if(difficulty == 3){
         int randomIndex = rand() % words3.size();
-        return words[randomIndex];
+        return words3[randomIndex];
 
     }
 
@@ -274,12 +317,13 @@ string word(int difficulty){
 }
 
 void printStats(){
-    cout << "---->All stats calculted for this game session<----\n" << endl; 
-    cout << "You Won  " << "temp" << " times!" << endl;
-    cout << "Correct guesses: " << "temp" << endl;
-    cout << " Correct words guessed: " << "temp" << endl;
-    cout << "Words not guessed: " << "temp" << endl;
-    cout << "Incorrect gusses: " << "temp" << endl;
+    cout << "\n\n\n\n---->All stats calculted for this game session<----\n" << endl; 
+    cout << "You Won  " << timesWon << " times!" << endl;
+    cout << "You lost  " << timesLost << " times." << endl;
+    cout << "Correct guesses: " << totalRight << endl;
+    cout << "Incorrect guesses: " << totalWrong << endl;
+    cout << "Total guesses: " << totalGuesses << endl; 
+    cout << "\n\n\n\n" << endl; 
     
     
 }
@@ -291,28 +335,9 @@ void printMenu(){
 
 }
 
-void sortWords(vector<string>& words, vector<string>& word1, vector<string>& word2, vector<string>& word3){
-    cout << "Sorting Words" << endl; 
-    for(const auto& word : words)
-    {
-        if(word.size() <= 4)
-        {
-            word1.push_back(word);
-        }
-        else if(word.size() <= 10 && word.size() > 4)
-        {
-            word2.push_back(word);
-        }
-        else
-        {
-            word3.push_back(word);
-        }
-    }
 
 
-}
-
-void readFile(vector<string>& words)
+void readFile()
 {
     ifstream inputFile("words.txt");
 
@@ -325,15 +350,50 @@ void readFile(vector<string>& words)
     string word;
     while (inputFile >> word)
     {
-        words.push_back(word);
+        if(word.length() < 5)
+        {
+            words1.push_back(word);
+        }
+        if((word.length() > 5 && word.length() < 8)) 
+        {
+            words2.push_back(word);
+        }
+        if(word.length() >= 8)
+        {
+            words3.push_back(word);
+        }
+
+       
     }
 
     inputFile.close();
 }
 
 void debug(){
-    cout << "DEBUG Selected Printing all info:" << endl; 
-    for(word)
+    cout << "DEBUG Selected Printing all info... PRESS ENTER" << endl; 
+    cin.ignore();
+    cin.get();
+    cout << "\nALL WORDS IN WORDS1 VECTOR: \n" << endl; 
+    for(const auto& word : words1)
+        cout << word << " ";
+    cout << "\nPress Enter to show all words in words2 vector." << endl; 
+    cin.ignore();
+    cin.get();
+    cout << "\nALL WORDS IN WORDS2 VECTOR: \n" << endl; 
+    for(const auto& word : words2)
+        cout << word << " ";
+    cout << "\nPress Enter to show all words in words3 vector." << endl; 
+    cin.ignore();
+    cin.get();
+     cout << "\nALL WORDS IN WORDS3 VECTOR: \n" << endl; 
+    for(const auto& word : words3)
+        cout << word << " ";
+    cout << "\nPress Enter" << endl; 
+    cin.ignore();
+    cin.get();
+    
+
+
 
 
 }
