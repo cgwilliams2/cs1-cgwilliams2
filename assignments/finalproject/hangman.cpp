@@ -34,7 +34,7 @@ vector<string> words1;
 vector<string> words2;
 vector<string> words3;
 int difficulty = 2; 
-string gameWord, repGameWord;
+string gameWord, repGameWord; 
 int timesWon = 0; 
 int timesLost = 0;
 int totalGuesses = 0;
@@ -311,12 +311,20 @@ string word(int difficulty){
 }
 
 void printStats(){
+    double percentCorrect = (totalRight / totalGuesses) * 10; 
+    double percentWrong = (totalWrong / totalGuesses) * 10;
+    int totalGames = timesLost + timesWon;
+    double percentWon = (timesWon / totalGames) * 10; 
+    double percentLost = (timesLost / totalGames) * 10;
     cout << "\n\n\n\n---->All stats calculted for this game session<----\n" << endl; 
     cout << "You Won  " << timesWon << " times!" << endl;
     cout << "You lost  " << timesLost << " times." << endl;
     cout << "Correct guesses: " << totalRight << endl;
     cout << "Incorrect guesses: " << totalWrong << endl;
-    cout << "Total guesses: " << totalGuesses << endl; 
+    cout << "Total guesses: " << totalGuesses << endl;
+    cout << "You guessed corred %" << round(percentCorrect) << " of the time." << end;
+     
+
     cout << "\n\n\n\n" << endl; 
     
     
