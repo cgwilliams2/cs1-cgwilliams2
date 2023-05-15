@@ -7,6 +7,7 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <cmath> 
 
 
 using namespace std;
@@ -311,23 +312,22 @@ string word(int difficulty){
 }
 
 void printStats(){
-    double percentCorrect = (totalRight / totalGuesses) * 10; 
-    double percentWrong = (totalWrong / totalGuesses) * 10;
+    double percentCorrect = (static_cast<double>(totalRight) / totalGuesses) * 100; 
+    double percentWrong = (static_cast<double>(totalWrong) / totalGuesses) * 100;
     int totalGames = timesLost + timesWon;
-    double percentWon = (timesWon / totalGames) * 10; 
-    double percentLost = (timesLost / totalGames) * 10;
-    cout << "\n\n\n\n---->All stats calculted for this game session<----\n" << endl; 
-    cout << "You Won  " << timesWon << " times!" << endl;
-    cout << "You lost  " << timesLost << " times." << endl;
+    double percentWon = (static_cast<double>(timesWon) / totalGames) * 100; 
+    double percentLost = (static_cast<double>(timesLost) / totalGames) * 100;
+    cout << "\n\n\n\n---->All stats calculated for this game session<----\n" << endl; 
+    cout << "You Won " << timesWon << " times!" << endl;
+    cout << "You lost " << timesLost << " times." << endl;
     cout << "Correct guesses: " << totalRight << endl;
     cout << "Incorrect guesses: " << totalWrong << endl;
     cout << "Total guesses: " << totalGuesses << endl;
-    cout << "You guessed corred %" << round(percentCorrect) << " of the time." << end;
-     
-
+    cout << "You guessed correctly " << round(percentCorrect) << "% of the time." << endl;
+    cout << "You guessed wrong " << round(percentWrong) << "% of the time." << endl;
+    cout << "You won " << round(percentWon) << "% of the time." << endl;
+    cout << "You lost " << round(percentLost) << "% of the time." << endl;
     cout << "\n\n\n\n" << endl; 
-    
-    
 }
 
 void printMenu(){
