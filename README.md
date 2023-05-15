@@ -116,12 +116,12 @@
 | Name | Value |
 | :--- | :--- |
 | Name |  Final Project |
-| Description |   |
-| Due Date |  |
-| Status |  |
-| Location |  |
-| Self Grade |  |
-| Notes |   |
+| Description | Hangman Game  |
+| Due Date | 05/15/2023 |
+| Status | Done |
+| Location | https://github.com/cgwilliams2/cs1-cgwilliams2/tree/main/assignments/finalproject |
+| Self Grade | 90/90 |
+| Notes | None |
 
 
 
