@@ -1,36 +1,22 @@
-// Colton Williams Hangman Game final project 
-// Takes a list of words from a txt file selects one and has the user guess what the word is. 
+// hangman.cpp
 
+#include "hangman.h"
 #include <iostream>
 #include <fstream>
-#include <string>
-#include <vector>
 #include <cstdlib>
 #include <ctime>
-#include <cmath> 
-
+#include <cmath>
+#include <cctype>
 
 using namespace std;
 
 #ifdef _WIN32
-#define clear() system("cls")
+#define clean() system("cls")
 #else
-#define clear() system("clear")
+#define clean() system("clear")
 #endif
 
-//functions
-void initialize();
-void readFile();
-void game();
-void gameRun();
-void printMenu();
-void printStats();
-void gameStart();
-void changeDifficulty();
-string word(int difficulty);
-void debug();
 
-// varibles and word vectors
 vector<string> words1;
 vector<string> words2;
 vector<string> words3;
@@ -42,7 +28,6 @@ int totalGuesses = 0;
 int totalWrong = 0;
 int totalRight = 0; 
 
-
 // gamestates
 string game0 = "     |------------\n     |/       |\n     |\n     |\n     |\n     |\n     |\n===========\n";
 string game1 = "     |------------\n     |/       |\n     |        O\n     |\n     |\n     |\n     |\n===========\n";
@@ -53,44 +38,6 @@ string game5 = "     |------------\n     |/       |\n     |        O\n     |    
 string game6 = "     |------------\n     |/       |\n     |        O\n     |       /|\\ \n     |       / \\\n     |\n     |\n===========\n";
 
 
-int main(){
-    clear();
-    initialize();
-    cout << "Welcome to my Hangman game!" << endl; 
-    cout << "This game picks a word based on the difficulty you select." << endl;
-    cout << "There are three levels of difficulty 1, 2, and 3" << endl;
-    cout << "1 is words with 4 or less letters" << endl;
-    cout << "2 is words with 5-8 letters" << endl;
-    cout << "3 is words with 9+" << endl;
-    cout << "Defualt difficulty is 2." << endl; 
-    cout << "The words are only words in the English Dictionary" << endl; 
-    cout << "You will have 6 trys to guess the word. " << endl;
-    cout << "Press Y/y then enter to play or just press enter to quit:" << endl; 
-    string start;
-    getline(cin, start);
-    if(start != "Y" && start != "y"){
-        cout << "Exiting Program|||" << endl;
-        exit(EXIT_FAILURE);
-    }
-    else
-    game();
-    
-
-    
-    
-    clear();
-    printStats();
-
-
-    
-    
-    return 0; 
-}
-
-
-
-
-
 
 
 
@@ -98,23 +45,40 @@ void game(){
     cout << "Game Started" << endl;
     
     
-    int menu = 0;
+    int menu = -1; 
+   
     
-    while(menu != 2){
+    while( menu == -1){
+        
         cout << "Difficulty is: " << difficulty << endl; 
         printMenu();
         cin >> menu;
+        if(cin.fail()){
+            cout << "Invalid input." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            menu = -1; 
+        }
         if(menu == 1 ){
             changeDifficulty();
+            menu = -1; 
+            
 
         }
         if(menu == 0){
             gameRun();
+            menu = -1; 
+           
 
         }
-        if(menu == 1234)
+        if(menu == 1234){
             debug();
+            menu = -1; 
+            
 
+        }
+            
+        
     }
     
 }
@@ -135,13 +99,15 @@ void gameRun(){
     string wrngLetters, letter, lettersEnt;
     bool guess = false;
     bool stop = false;
+    int loopCheck = 0; 
     
    
 
     while(!stop){
-        bool newlet = false; 
+        bool newlet = false;
         
-        clear();
+        
+        clean();
         if(numwg == 0)
             cout << game0 << endl;
         if(numwg == 1)
@@ -168,15 +134,24 @@ void gameRun(){
 
         cout << "Guess a letter then press Enter: " << endl;
         cin >> letter;
+        letter = tolower(letter[0]);
+        
 
-        while(letter.length() > 1){
+        while(letter.length() > 1 && !stop){
              cout << "only enter one letter" << endl;
             cout << "Guess a letter then press Enter: ";
             cin >> letter;
+            letter = tolower(letter[0]);
             for(int i = 0; i < lettersEnt.length(); i++){
                 if(letter[0] == lettersEnt[i]){
                     cout << "Letter alredy used. Try a difffernt letter" << endl; 
                     letter = "  ";
+                    loopCheck++;
+                    if(loopCheck > 999){
+                        stop = true;
+                       
+
+                    }
                 }
             }
         }
@@ -187,11 +162,18 @@ void gameRun(){
                     }
             }
 
-        while(newlet){
+        while(newlet && !stop){
             for(int i = 0; i < lettersEnt.length(); i++){
                 if(letter[0] == lettersEnt[i]){
                     cout << "Letter alredy used. Try a difffernt letter" << endl;
-                    cin >> letter; 
+                    cin >> letter;
+                    letter = tolower(letter[0]);
+                    loopCheck++;
+                    if(loopCheck > 999){
+                        stop = true; 
+
+                    }
+                    
                     
                 }
                 newlet = false; 
@@ -226,7 +208,8 @@ void gameRun(){
         }
 
         if(numwg == 6){
-            clear();
+            stop = true; 
+            clean();
             cout << game6 << endl;
             cout << "  You  Lost :(" << endl;
             cout << "The word was: " << gameWord << endl;
@@ -237,11 +220,13 @@ void gameRun(){
             cin.ignore();
             if(cin.get() == '\n')
             stop = true; 
+            
         
         }
 
         if(numcg == gameWord.length()){
-            clear();
+            stop = true; 
+            clean();
             cout << "   You Won!!" << endl;
             cout << "The word was: " << gameWord << endl;
             int total = numwg + numcg;
@@ -260,8 +245,6 @@ void gameRun(){
 
 
 }
-
-
 
 void changeDifficulty(){
     cout << "There are three levels of difficulty 1, 2, and 3" << endl;
@@ -286,29 +269,32 @@ void initialize(){
 
 string word(int difficulty){
 
-    if(difficulty == 1){
-        int randomIndex = rand() % words1.size();
-        return words1[randomIndex];
+    vector<string>* selectedWords = nullptr;
+
+     if (difficulty == 1) {
+        selectedWords = &words1;
     }
-
-    if(difficulty == 2){
-        int randomIndex = rand() % words2.size();
-        return words2[randomIndex];
-
+    else if (difficulty == 2) {
+        selectedWords = &words2;
     }
-
-    if(difficulty == 3){
-        int randomIndex = rand() % words3.size();
-        return words3[randomIndex];
-
+    else if (difficulty == 3) {
+        selectedWords = &words3;
     }
-
     else {
-        cout << "Exiting Program||| no word selected String Word()." << endl;
+        cout << "Exiting Program ||| No word selected in 'word()' function." << endl;
         exit(EXIT_FAILURE);
     }
 
-    return "";
+    if (selectedWords->empty()) {
+        cout << "No more words available for the selected difficulty." << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    int randomIndex = rand() % selectedWords->size();
+    string selectedWord = (*selectedWords)[randomIndex];
+    selectedWords->erase(selectedWords->begin() + randomIndex);
+
+    return selectedWord;
 }
 
 void printStats(){
@@ -337,8 +323,6 @@ void printMenu(){
 
 }
 
-
-
 void readFile()
 {
     ifstream inputFile("words.txt");
@@ -352,6 +336,10 @@ void readFile()
     string word;
     while (inputFile >> word)
     {
+        for (char& c : word){
+            c = tolower(c);
+        }
+
         if(word.length() < 5)
         {
             words1.push_back(word);
@@ -399,4 +387,3 @@ void debug(){
 
 
 }
-

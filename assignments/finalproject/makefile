@@ -1,31 +1,34 @@
-# compiler name
+# Compiler name
 CXX = g++
-# g++ compiler flags
-# -g: adds debugging information to the executable file
-# -Wall: turns on most, but not  all, compiler warnings
-# -std=c++17: uses c++17 standard
-# put all the required flags separated by space
-CXXFLAGS = -c -g -Wall -std=c++17
 
-# the build target executable file; .exe is not required
-PROGRAM = hangman.exe
+# Compiler flags
+CXXFLAGS = -g -Wall -std=c++17
 
-# list .cpp files separated by space
-CPPFILES = hangman.cpp
+# Build target executable file; .exe is not required on Unix-based systems
+SRC = main.cpp hangman.cpp hangman.h # List all your source code files here
+OBJ = $(SRC:.cpp=.o)
 
-# make all rule/default rule that'll be run when we run "make"
-# first compile each file to object file
-# then make a single binary/executable program
-all:
-	$(CXX) $(CXXFLAGS) $(CPPFILES)
-	$(CXX) -o $(PROGRAM) *.o
+PROGRAM = hangman
 
-# make clean rule
-# delete object and binary files
+# List .cpp files separated by space
+CPPFILES = hangman.cpp main.cpp
+
+# Make all rule/default rule that will be run when we run "make"
+# First compile each file to an object file
+# Then make a single binary/executable program
+all: $(PROGRAM)
+
+$(PROGRAM): $(CPPFILES:.cpp=.o)
+	$(CXX) $(CXXFLAGS) $(CPPFILES:.cpp=.o) -o $(PROGRAM)
+
+.cpp.o:
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Make clean rule
+# Delete object and binary files
 clean:
 	rm -f $(PROGRAM) *.o
 
 # Run Program
 run:
 	./$(PROGRAM)
-
